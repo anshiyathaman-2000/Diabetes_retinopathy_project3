@@ -1,0 +1,107 @@
+{
+  "accuracy": 0.5,
+  "macro_precision": 0.40336700336700326,
+  "macro_recall": 0.4049459527400704,
+  "macro_f1": 0.3972951095339155,
+  "weighted_f1": 0.4904123970849168,
+  "quadratic_weighted_kappa": 0.5787430959844753,
+  "overall_roc_auc": 0.7337421896113794,
+  "overall_pr_auc": 0.3892805493521378,
+  "weighted_roc_auc": 0.733356510907477,
+  "weighted_pr_auc": 0.4682943095040897,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.6666666666666666,
+      "recall": 0.6470588235294118,
+      "recall_sensitivity": 0.6470588235294118,
+      "specificity": 0.8382352941176471,
+      "f1_score": 0.6567164179104478,
+      "support": 34,
+      "roc_auc": 0.8096885813148789,
+      "pr_auc": 0.6509194501932304
+    },
+    "Mild NPDR": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall_sensitivity": 0.0,
+      "specificity": 1.0,
+      "f1_score": 0.0,
+      "support": 5,
+      "roc_auc": 0.6969072164948453,
+      "pr_auc": 0.08971861471861473
+    },
+    "Moderate NPDR": {
+      "precision": 0.42424242424242425,
+      "recall": 0.4375,
+      "recall_sensitivity": 0.4375,
+      "specificity": 0.7285714285714285,
+      "f1_score": 0.4307692307692308,
+      "support": 32,
+      "roc_auc": 0.63125,
+      "pr_auc": 0.3962212995404204
+    },
+    "Severe NPDR": {
+      "precision": 0.37037037037037035,
+      "recall": 0.5555555555555556,
+      "recall_sensitivity": 0.5555555555555556,
+      "specificity": 0.7976190476190477,
+      "f1_score": 0.4444444444444444,
+      "support": 18,
+      "roc_auc": 0.7374338624338624,
+      "pr_auc": 0.39660392679025713
+    },
+    "Proliferative DR": {
+      "precision": 0.5555555555555556,
+      "recall": 0.38461538461538464,
+      "recall_sensitivity": 0.38461538461538464,
+      "specificity": 0.9550561797752809,
+      "f1_score": 0.45454545454545453,
+      "support": 13,
+      "roc_auc": 0.7934312878133103,
+      "pr_auc": 0.4129394555181662
+    }
+  },
+  "confusion_matrix": [
+    [
+      22,
+      0,
+      9,
+      3,
+      0
+    ],
+    [
+      3,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      14,
+      10,
+      3
+    ],
+    [
+      2,
+      0,
+      5,
+      10,
+      1
+    ],
+    [
+      1,
+      0,
+      3,
+      4,
+      5
+    ]
+  ],
+  "test_protocol": "deduplicated",
+  "test_samples": 102,
+  "checkpoint_epoch": 12,
+  "best_val_qwk": 0.740682883284981,
+  "model_name": "hybrid",
+  "checkpoint_path": "checkpoints/hybrid_five_class_clahe_controlled_leakage_free_s42_best.pt"
+}

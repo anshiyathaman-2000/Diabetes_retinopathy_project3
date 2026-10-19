@@ -1,0 +1,107 @@
+{
+  "accuracy": 0.5,
+  "macro_precision": 0.37712121212121213,
+  "macro_recall": 0.378057440925088,
+  "macro_f1": 0.3706296992481203,
+  "weighted_f1": 0.4820092510688487,
+  "quadratic_weighted_kappa": 0.5586876891224717,
+  "overall_roc_auc": 0.7723670890951154,
+  "overall_pr_auc": 0.4446195184296564,
+  "weighted_roc_auc": 0.78549316711124,
+  "weighted_pr_auc": 0.534646394656111,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.6333333333333333,
+      "recall": 0.5588235294117647,
+      "recall_sensitivity": 0.5588235294117647,
+      "specificity": 0.8382352941176471,
+      "f1_score": 0.59375,
+      "support": 34,
+      "roc_auc": 0.8455882352941176,
+      "pr_auc": 0.6266872060759575
+    },
+    "Mild NPDR": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall_sensitivity": 0.0,
+      "specificity": 1.0,
+      "f1_score": 0.0,
+      "support": 5,
+      "roc_auc": 0.7195876288659794,
+      "pr_auc": 0.10266706977233293
+    },
+    "Moderate NPDR": {
+      "precision": 0.4772727272727273,
+      "recall": 0.65625,
+      "recall_sensitivity": 0.65625,
+      "specificity": 0.6714285714285714,
+      "f1_score": 0.5526315789473685,
+      "support": 32,
+      "roc_auc": 0.7227678571428572,
+      "pr_auc": 0.5615098845353395
+    },
+    "Severe NPDR": {
+      "precision": 0.4,
+      "recall": 0.4444444444444444,
+      "recall_sensitivity": 0.4444444444444444,
+      "specificity": 0.8571428571428571,
+      "f1_score": 0.42105263157894735,
+      "support": 18,
+      "roc_auc": 0.8366402116402117,
+      "pr_auc": 0.5251761962815503
+    },
+    "Proliferative DR": {
+      "precision": 0.375,
+      "recall": 0.23076923076923078,
+      "recall_sensitivity": 0.23076923076923078,
+      "specificity": 0.9438202247191011,
+      "f1_score": 0.2857142857142857,
+      "support": 13,
+      "roc_auc": 0.7372515125324114,
+      "pr_auc": 0.407057235483102
+    }
+  },
+  "confusion_matrix": [
+    [
+      19,
+      0,
+      14,
+      1,
+      0
+    ],
+    [
+      4,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      4,
+      0,
+      21,
+      6,
+      1
+    ],
+    [
+      1,
+      0,
+      5,
+      8,
+      4
+    ],
+    [
+      2,
+      0,
+      3,
+      5,
+      3
+    ]
+  ],
+  "test_protocol": "deduplicated",
+  "test_samples": 102,
+  "checkpoint_epoch": 5,
+  "best_val_qwk": 0.784950552859176,
+  "model_name": "resnet50",
+  "checkpoint_path": "checkpoints/resnet50_five_class_clahe_controlled_leakage_free_s42_best.pt"
+}

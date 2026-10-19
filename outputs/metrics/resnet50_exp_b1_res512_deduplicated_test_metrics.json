@@ -1,0 +1,107 @@
+{
+  "accuracy": 0.5980392156862745,
+  "macro_precision": 0.4596078431372549,
+  "macro_recall": 0.44321266968325795,
+  "macro_f1": 0.43774918579872135,
+  "weighted_f1": 0.571671156500878,
+  "quadratic_weighted_kappa": 0.6118347001125584,
+  "overall_roc_auc": 0.8312971275297715,
+  "overall_pr_auc": 0.5344388204752576,
+  "weighted_roc_auc": 0.8524512549163773,
+  "weighted_pr_auc": 0.6567256242084358,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.7352941176470589,
+      "recall": 0.7352941176470589,
+      "recall_sensitivity": 0.7352941176470589,
+      "specificity": 0.8676470588235294,
+      "f1_score": 0.7352941176470589,
+      "support": 34,
+      "roc_auc": 0.9039792387543253,
+      "pr_auc": 0.7385245436106692
+    },
+    "Mild NPDR": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall_sensitivity": 0.0,
+      "specificity": 1.0,
+      "f1_score": 0.0,
+      "support": 5,
+      "roc_auc": 0.7814432989690722,
+      "pr_auc": 0.1262812857640444
+    },
+    "Moderate NPDR": {
+      "precision": 0.5333333333333333,
+      "recall": 0.75,
+      "recall_sensitivity": 0.75,
+      "specificity": 0.7,
+      "f1_score": 0.6233766233766234,
+      "support": 32,
+      "roc_auc": 0.8348214285714286,
+      "pr_auc": 0.7610226024966819
+    },
+    "Severe NPDR": {
+      "precision": 0.5294117647058824,
+      "recall": 0.5,
+      "recall_sensitivity": 0.5,
+      "specificity": 0.9047619047619048,
+      "f1_score": 0.5142857142857142,
+      "support": 18,
+      "roc_auc": 0.8644179894179894,
+      "pr_auc": 0.6578591522440115
+    },
+    "Proliferative DR": {
+      "precision": 0.5,
+      "recall": 0.23076923076923078,
+      "recall_sensitivity": 0.23076923076923078,
+      "specificity": 0.9662921348314607,
+      "f1_score": 0.3157894736842105,
+      "support": 13,
+      "roc_auc": 0.7718236819360415,
+      "pr_auc": 0.3885065182608815
+    }
+  },
+  "confusion_matrix": [
+    [
+      25,
+      0,
+      9,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      3,
+      0,
+      0
+    ],
+    [
+      3,
+      0,
+      24,
+      5,
+      0
+    ],
+    [
+      1,
+      0,
+      5,
+      9,
+      3
+    ],
+    [
+      3,
+      0,
+      4,
+      3,
+      3
+    ]
+  ],
+  "test_protocol": "deduplicated",
+  "test_samples": 102,
+  "checkpoint_epoch": 6,
+  "best_val_qwk": 0.8606319645855595,
+  "model_name": "resnet50",
+  "checkpoint_path": "/Users/apple/Library/Mobile Documents/com~apple~CloudDocs/paper_ayush/checkpoints/resnet50_five_class_clahe_exp_b1_res512_s42_best.pt"
+}

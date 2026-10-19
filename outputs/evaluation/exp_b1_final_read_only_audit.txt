@@ -1,0 +1,248 @@
+====================================================================================================
+INDEPENDENT ML EXPERIMENT AUDIT REPORT: EXP B1 (RESNET-50 AT 512x512)
+PROJECT: IDRiD Diabetic Retinopathy Classification
+AUDIT TIMESTAMP: 2026-10-19T15:15:00+05:30
+AUDIT TYPE: Read-Only Independent Artifact & Metric Verification
+====================================================================================================
+
+FINAL AUDIT VERDICT: VERIFIED WITH LIMITATIONS
+----------------------------------------------------------------------------------------------------
+Exp B1 training, checkpointing, and evaluation pipeline artifacts have been verified from raw disk
+files. Metrics independently recomputed from prediction CSVs match saved JSON records to the 6th
+decimal place. The primary comparison against the controlled 256x256 baseline is mathematically
+verified. However, key structural dataset limitations (the cross-split duplicate IDRiD_118/064,
+intra-training label discrepancies, and zero recall on minority Grade 1 Mild NPDR) are formally
+documented below.
+
+====================================================================================================
+SECTION 1: CHECKPOINT & REPRODUCIBILITY AUDIT
+====================================================================================================
+[PASS] Checkpoint Verification & Compatibility:
+  - Best Checkpoint File : checkpoints/resnet50_five_class_clahe_exp_b1_res512_s42_best.pt
+  - Last Checkpoint File : checkpoints/resnet50_five_class_clahe_exp_b1_res512_s42_last.pt
+  - Best Checkpoint Epoch: 6
+  - Saved Val Metric     : QWK = 0.8606319645855595 (best_val_qwk)
+  - Last Completed Epoch : 13
+  - Early-Stopping Status: Early stopping triggered at Epoch 13 (patience = 7 consecutive epochs
+                           without improvement over Epoch 6; 6 + 7 = 13).
+  - Evaluated Checkpoint : Verified that official & deduplicated test evaluations strictly loaded
+                           the best checkpoint (Epoch 6), NOT the last checkpoint (Epoch 13).
+  - Config Compatibility : Verified in checkpoint metadata:
+      * Model Architecture: ResNet-50 (pretrained=True, dropout=0.3, num_classes=5)
+      * Spatial Resolution: 512x512
+      * Preprocessing     : LAB Luminance CLAHE (clip_limit=2.0, tile_grid_size=[8, 8])
+      * Normalization     : ImageNet mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+      * Effective Batch   : Micro-batch 8, grad_accum_steps 2 -> Effective batch size = 16
+      * Optimizer/Sched   : AdamW (lr=1e-4, wd=1e-4), Cosine Annealing (T_max=15)
+      * Loss Formulation  : CrossEntropyLoss with sqrt-based class weights
+
+====================================================================================================
+SECTION 2: DATA SPLIT & DUPLICATE COHESION AUDIT
+====================================================================================================
+[PASS] Partition Integrity & Disjointness:
+  - Split Manifest File  : data/splits/leakage_aware_split_manifest.json
+  - Manifest Seed        : 42 (val_ratio = 0.20)
+  - Training Partition   : 330 unique image IDs
+  - Validation Partition : 83 unique image IDs
+  - Official Test Holdout: 103 unique image IDs
+  - Clean Test Holdout   : 102 unique image IDs (excludes cross-split duplicate IDRiD_064)
+  - Train/Val Overlap    : EXACTLY 0 SAMPLES (Strict Disjointness PASS)
+  - Baseline Alignment   : Manifest content and image ID lists are 100% IDENTICAL to those used by
+                           the controlled 256x256 baseline (git diff confirms zero modifications).
+
+[VERIFIED WITH LIMITATIONS] Duplicate Group Audit & Split Membership:
+Cryptographic SHA-256 analysis of all 516 IDRiD images confirms 6 duplicate groups:
+
+1. Cross-Split Duplicate Group 1 (IDRiD_118 vs IDRiD_064):
+   - SHA-256 Hash   : 505330878f4d4186a71b8001570100b82b6b05cb431e81e2c259d8c584314708
+   - Train Image    : IDRiD_118 (Partition: TRAIN, Official Label: Grade 0 / No DR)
+   - Test Image     : IDRiD_064 (Partition: OFFICIAL TEST, Official Label: Grade 3 / Severe NPDR)
+   - Conflict Status: CRITICAL LABEL MISMATCH (Grade 0 vs Grade 3 on byte-identical fundus image).
+   - Training Status: IDRiD_118 WAS INCLUDED in the training set (N=330) because Exp B1 was mandated
+                      to use the exact baseline manifest.
+   - Test Prediction: On the official test set, the model predicted Class 2 (Moderate NPDR) with
+                      confidence 0.4149 (prob_No DR=0.2326, prob_Severe=0.1609). It did not blindly
+                      memorize Grade 0.
+   - Sensitivity Mitigation: Sensitivity analysis protocol (N=102) strictly excludes IDRiD_064 to
+                             measure performance without cross-split duplicate contamination.
+
+2. Intra-Training Duplicate Group 2 (IDRiD_045 vs IDRiD_333):
+   - SHA-256 Hash   : fe4f412a179adf78bd9a367d1702878d45302db3f7706c4bf7efc834a312e91c
+   - Membership     : Both assigned to TRAIN (Partition Cohesion: PASS)
+   - Official Labels: Grade 2 vs Grade 2 (Labels Match: PASS)
+
+3. Intra-Training Duplicate Group 3 (IDRiD_079 vs IDRiD_279):
+   - SHA-256 Hash   : 314e41f14e9d2966eff50a085d02c7acf2a1439702358b5849f3db4657f8381b
+   - Membership     : Both assigned to TRAIN (Partition Cohesion: PASS)
+   - Official Labels: Grade 1 vs Grade 1 (Labels Match: PASS)
+
+4. Intra-Training Duplicate Group 4 (IDRiD_028 vs IDRiD_327):
+   - SHA-256 Hash   : 350754e96bf6b9540264c1b53088dc1f5826edb2a9d3d3221acf9ef5afd76a13
+   - Membership     : Both assigned to TRAIN (Partition Cohesion: PASS)
+   - Official Labels: Grade 4 (PDR) vs Grade 3 (Severe NPDR) (LABEL MISMATCH in ground truth)
+
+5. Intra-Training Duplicate Group 5 (IDRiD_021 vs IDRiD_391):
+   - SHA-256 Hash   : 7c8af82fac4906b51dbe2d827e050b8b29a18cac21f569d2ac16af1cd65c9baf
+   - Membership     : Both assigned to VAL (Partition Cohesion: PASS)
+   - Official Labels: Grade 1 (Mild NPDR) vs Grade 2 (Moderate NPDR) (LABEL MISMATCH in ground truth)
+
+6. Intra-Training Duplicate Group 6 (IDRiD_073 vs IDRiD_375):
+   - SHA-256 Hash   : a05e538dcf8554a99cdbc72a2ae4dedc196d87c73d9278869e644b4163af8f4d
+   - Membership     : Both assigned to TRAIN (Partition Cohesion: PASS)
+   - Official Labels: Grade 2 vs Grade 2 (Labels Match: PASS)
+
+Partition Cohesion Verdict:
+ZERO intra-training duplicate pairs cross the Train/Val boundary. All identical image pairs reside
+strictly within the same split partition.
+
+====================================================================================================
+SECTION 3: INDEPENDENT RECOMPUTATION OF EXP B1 TEST METRICS
+====================================================================================================
+[PASS] Official Test Benchmark Protocol (N=103):
+  - Prediction Source: outputs/predictions/resnet50_exp_b1_res512_official_predictions.csv
+  - Metrics Source   : outputs/metrics/resnet50_exp_b1_res512_official_test_metrics.json
+
+  Metric Name                  Saved JSON       Recomputed from CSV   Match Status
+  --------------------------------------------------------------------------------
+  Sample Count (N)             103              103                   EXACT MATCH
+  Accuracy                     0.592233         0.592233 (59.22%)     EXACT MATCH
+  Quadratic Weighted Kappa     0.611198         0.611198              EXACT MATCH
+  Macro-F1                     0.433294         0.433294              EXACT MATCH
+  Weighted-F1                  0.565996         0.565996              EXACT MATCH
+  Macro-Precision              0.457289         0.457289              EXACT MATCH
+  Macro-Recall                 0.437950         0.437950              EXACT MATCH
+  Multiclass ROC-AUC (OVR)     0.827165         0.827165              EXACT MATCH
+
+  Class-Wise Breakdown (Official Test N=103):
+  Class Name       Support   Precision   Recall / Sens   Specificity   F1-Score
+  --------------------------------------------------------------------------------
+  No DR (Grade 0)       34      0.7353          0.7353        0.8696     0.7353
+  Mild NPDR (Grade 1)    5      0.0000          0.0000        1.0000     0.0000
+  Moderate (Grade 2)    32      0.5217          0.7500        0.6901     0.6154
+  Severe NPDR (Grade 3) 19      0.5294          0.4737        0.9048     0.5000
+  PDR (Grade 4)         13      0.5000          0.2308        0.9667     0.3158
+
+  Confusion Matrix (Recomputed vs Saved): EXACT MATCH
+  [ [ 25,  0,  9,  0,  0 ],   <- Grade 0 (25/34 correct)
+    [  2,  0,  3,  0,  0 ],   <- Grade 1 ( 0/ 5 correct)
+    [  3,  0, 24,  5,  0 ],   <- Grade 2 (24/32 correct)
+    [  1,  0,  6,  9,  3 ],   <- Grade 3 ( 9/19 correct)
+    [  3,  0,  4,  3,  3 ] ]  <- Grade 4 ( 3/13 correct)
+
+[PASS] Sensitivity Analysis Protocol (N=102, Excluding IDRiD_064):
+  - Prediction Source: outputs/predictions/resnet50_exp_b1_res512_deduplicated_predictions.csv
+  - Metrics Source   : outputs/metrics/resnet50_exp_b1_res512_deduplicated_test_metrics.json
+
+  Metric Name                  Saved JSON       Recomputed from CSV   Match Status
+  --------------------------------------------------------------------------------
+  Sample Count (N)             102              102                   EXACT MATCH
+  Accuracy                     0.598039         0.598039 (59.80%)     EXACT MATCH
+  Quadratic Weighted Kappa     0.611835         0.611835              EXACT MATCH
+  Macro-F1                     0.437749         0.437749              EXACT MATCH
+  Weighted-F1                  0.571671         0.571671              EXACT MATCH
+  Macro-Precision              0.459608         0.459608              EXACT MATCH
+  Macro-Recall                 0.443213         0.443213              EXACT MATCH
+  Multiclass ROC-AUC (OVR)     0.831297         0.831297              EXACT MATCH
+
+  Verification of Excluded Sample:
+  Image IDRiD_064 is confirmed absent from deduplicated predictions (103 - 1 = 102).
+  Support for Grade 3 decreases from 19 to 18; false-moderate predictions decrease from 6 to 5.
+
+====================================================================================================
+SECTION 4: BASELINE COMPARISON AUDIT & HISTORICAL CONTEXT
+====================================================================================================
+[PASS] Primary Controlled Baseline Verification:
+The 256x256 baseline metrics cited in the Exp B1 report are verified from original artifacts:
+  - Artifact Checkpoint: checkpoints/resnet50_five_class_clahe_controlled_leakage_free_s42_best.pt
+  - Artifact Metrics   : outputs/metrics/resnet50_controlled_leakage_free_official_test_metrics.json
+  - Artifact Preds CSV : outputs/predictions/resnet50_controlled_leakage_free_official_predictions.csv
+  - Controlled CSV     : outputs/metrics/controlled_comparison_controlled_leakage_free.csv
+  - Verified Metrics   : Accuracy = 49.51%, QWK = 0.5579, Macro-F1 = 0.3670, Val QWK = 0.7850
+
+Head-to-Head Comparative Delta (Official Test Set N=103):
+Metric                      Controlled 256x256    Exp B1 512x512     Delta (Absolute)
+-------------------------------------------------------------------------------------
+Test Accuracy               49.51% (51/103)       59.22% (61/103)    +9.71% (+10 images)
+Quadratic Weighted Kappa    0.5579                0.6112             +0.0533
+Macro-F1                    0.3670                0.4333             +0.0663
+Weighted-F1                 0.4772                0.5660             +0.0888
+Multiclass ROC-AUC          0.7668                0.8272             +0.0604
+Peak Validation QWK         0.7850 (Epoch 5)      0.8606 (Epoch 6)   +0.0756
+
+[AUDIT DISCLOSURE] Historical Baseline Variations:
+The repository contains other historical 256x256 runs that must be explicitly acknowledged:
+1. `resnet50_five_class_clahe_sqrt_cw_s42` (Acc=58.25%, QWK=0.6039, Macro-F1=0.4149):
+   - Flaw: Used unconstrained `StratifiedShuffleSplit`. Duplicate pairs crossed train/val.
+2. `resnet50_five_class_clahe_s42` (Acc=55.34%, QWK=0.6236, Macro-F1=0.4936):
+   - Flaw: Unweighted loss and unconstrained split.
+3. `resnet50_no_train_test_duplicate` (Acc=56.31%, QWK=0.6339, Macro-F1=0.4637):
+   - Difference: Excluded IDRiD_118 from training (N=329 train).
+
+Conclusion: The comparison against `resnet50_controlled_leakage_free` is the only valid
+apples-to-apples baseline because both use the exact same manifest, class weights, seed, and
+leakage-controlled data partitions.
+
+====================================================================================================
+SECTION 5: TRAINING TRAJECTORY & OVERFITTING AUDIT
+====================================================================================================
+[PASS] Training Claims & Early Stopping:
+  - Reported Epoch 6 validation QWK (0.8606) is verified in checkpoint history and val metrics JSON.
+  - Early stopping is verified: Epoch 6 was peak; Epochs 7-13 (7 epochs) showed no improvement.
+  - Training halted at Epoch 13 as specified by `patience: 7`.
+
+[CRITICAL ANALYSIS] Overfitting Assessment:
+The claim that "overfitting was absent" in earlier preliminary notes requires qualification:
+1. At Epoch 6 (Selected Checkpoint):
+   - Train Loss: 0.8778 | Val Loss: 0.9119
+   - Train Acc : 69.70% | Val Acc : 68.67% (Minimal generalization gap on validation)
+   - Train QWK : 0.8357 | Val QWK : 0.8606
+2. From Epoch 7 to Epoch 13 (Subsequent Overfitting Phase):
+   - Train Loss dropped from 0.8778 down to 0.5663.
+   - Train Acc rose from 69.70% up to 82.12%.
+   - Train QWK rose from 0.8357 up to 0.9070.
+   - Val Loss remained stagnant (0.9119 -> 0.9154, reaching 0.9556 at Epoch 10).
+   - Val QWK degraded to ~0.76 - 0.82.
+   Overfitting clearly began after Epoch 6. Early stopping functioned correctly by preventing
+   the selection of overfit late-epoch weights.
+3. Train/Val vs. Holdout Test Gap:
+   - Val Acc = 68.67% vs. Test Acc = 59.22% (-9.45% gap)
+   - Val QWK = 0.8606 vs. Test QWK = 0.6112 (-0.2494 gap)
+   This ~9.5% accuracy drop and ~0.25 QWK drop between validation and test reflects domain shift
+   inherent to IDRiD train/test splits, exacerbated by the small validation sample size (N=83).
+
+====================================================================================================
+SECTION 6: MINORITY CLASS (GRADE 1 / MILD NPDR) FINDINGS
+====================================================================================================
+[VERIFIED LIMITATION] Grade 1 Diagnosis Failure:
+Across both the 256x256 baseline and Exp B1 512x512:
+  - Official Test Support : 5 samples
+  - Validation Support    : 4 samples
+  - Training Support      : 20 samples (~4.8% of training data)
+  - True Positives (512x512): 0 / 5 (Recall = 0.00%, Precision = 0.00%)
+  - Confusion Matrix Distribution for Grade 1:
+      * 2 samples predicted as Grade 0 (No DR)
+      * 3 samples predicted as Grade 2 (Moderate NPDR)
+Finding: Increasing image resolution to 512x512 substantially improved Grade 0 recall (+17.6%),
+Grade 2 recall (+9.4%), and Grade 3 recall (+5.3%), but was completely insufficient by itself
+to resolve the detection failure of isolated microaneurysms in Grade 1.
+
+====================================================================================================
+AUDIT CHECKLIST & STATUS TABLE
+====================================================================================================
+Check Item                                                       Verdict
+------------------------------------------------------------------------------------
+1. Selected checkpoint matches Epoch 6 best validation QWK       PASS
+2. Evaluated test checkpoint is best.pt, not last.pt             PASS
+3. Early stopping triggered after 7 stagnant epochs              PASS
+4. Strict disjointness between train (330) and val (83)          PASS
+5. Cohesion of intra-training duplicates across splits           PASS
+6. Cross-split duplicate IDRiD_118/064 documented & audited      PASS
+7. Test predictions independently recomputed (Acc, QWK, F1)      PASS
+8. Sensitivity analysis protocol (N=102) verified                PASS
+9. Primary baseline (256x256) artifacts verified & recomputed   PASS
+10. Historical baseline variations transparently disclosed        PASS
+11. Overfitting and generalization gap accurately analyzed       PASS
+12. Minority Grade 1 recall failure documented                   PASS
+------------------------------------------------------------------------------------
+OVERALL AUDIT VERDICT: VERIFIED WITH LIMITATIONS
+====================================================================================================

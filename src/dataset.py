@@ -37,6 +37,15 @@ DR_CLASSES_BINARY = [
     "Referable DR (Grade 2-4)"
 ]
 
+# Cryptographically verified intra-training duplicate clusters from SHA-256 image audits
+VERIFIED_INTRA_TRAIN_DUPLICATE_PAIRS = [
+    ("IDRiD_045", "IDRiD_333"),
+    ("IDRiD_079", "IDRiD_279"),
+    ("IDRiD_028", "IDRiD_327"),
+    ("IDRiD_021", "IDRiD_391"),
+    ("IDRiD_073", "IDRiD_375"),
+]
+
 class IDRiDDataset(Dataset):
     """
     IDRiD Retinal Fundus Dataset.
@@ -190,23 +199,80 @@ def get_idrid_dataloaders(
     else:
         strat_target = (df_full_train['Retinopathy grade'] >= binary_threshold).astype(int).values
 
-    # Split selection: standard StratifiedShuffleSplit vs leakage_aware manifest
-    split_type = config.get("data", {}).get("split_type", "standard").lower()
-    manifest_path = Path(config.get("data", {}).get("split_manifest", "data/splits/leakage_aware_split_manifest.json"))
+    # Split selection: strict leakage-aware manifest vs explicit standard split
+    split_type = config.get("data", {}).get("split_type", "leakage_aware").lower()
+    manifest_path_cfg = config.get("data", {}).get("split_manifest", "data/splits/leakage_aware_split_manifest.json")
+    manifest_path = Path(manifest_path_cfg)
 
-    if split_type == "leakage_aware" and manifest_path.exists():
-        with open(manifest_path, "r") as f:
+    if split_type == "leakage_aware":
+        if not manifest_path.exists():
+            raise FileNotFoundError(
+                f"[SPLIT ERROR] Configured leakage-aware manifest not found: '{manifest_path}'. "
+                f"Silent fallback to random split is strictly disabled to prevent train-val leakage."
+            )
+        with open(manifest_path, "r", encoding="utf-8") as f:
             manifest = json.load(f)
-        train_names_set = set(manifest["train"])
-        val_names_set = set(manifest["val"])
-        df_train = df_full_train[df_full_train['Image name'].isin(train_names_set)].reset_index(drop=True)
-        df_val = df_full_train[df_full_train['Image name'].isin(val_names_set)].reset_index(drop=True)
-    else:
-        # Standard Stratified Train/Val split
+
+        if "train" not in manifest or "val" not in manifest:
+            raise ValueError(f"[SPLIT ERROR] Manifest '{manifest_path}' must contain 'train' and 'val' lists.")
+
+        train_names = manifest["train"]
+        val_names = manifest["val"]
+        train_names_set = set(train_names)
+        val_names_set = set(val_names)
+
+        # 1. Intra-list duplicate validation
+        if len(train_names) != len(train_names_set):
+            raise ValueError(f"[SPLIT ERROR] Duplicate sample IDs detected inside manifest 'train' list.")
+        if len(val_names) != len(val_names_set):
+            raise ValueError(f"[SPLIT ERROR] Duplicate sample IDs detected inside manifest 'val' list.")
+
+        # 2. Strict disjointness check
+        overlap = train_names_set & val_names_set
+        if overlap:
+            raise ValueError(f"[SPLIT ERROR] Critical data leakage! Train and Val partitions overlap by {len(overlap)} samples: {overlap}")
+
+        # 3. Training CSV alignment check
+        full_train_ids = set(df_full_train["Image name"])
+        manifest_all_ids = train_names_set | val_names_set
+        unknown_ids = manifest_all_ids - full_train_ids
+        if unknown_ids:
+            raise ValueError(f"[SPLIT ERROR] Manifest contains IDs absent from training CSV: {unknown_ids}")
+
+        # 4. Duplicate cluster cohesion validation (ensure byte-identical images never cross train/val)
+        for img1, img2 in VERIFIED_INTRA_TRAIN_DUPLICATE_PAIRS:
+            if img1 in manifest_all_ids and img2 in manifest_all_ids:
+                in_train_1 = img1 in train_names_set
+                in_train_2 = img2 in train_names_set
+                in_val_1 = img1 in val_names_set
+                in_val_2 = img2 in val_names_set
+                if (in_train_1 and in_val_2) or (in_val_1 and in_train_2):
+                    raise ValueError(
+                        f"[SPLIT ERROR] Critical train-val leakage! Cryptographic duplicate pair "
+                        f"({img1}, {img2}) split across train and val partitions in '{manifest_path}'."
+                    )
+
+        df_train = df_full_train[df_full_train["Image name"].isin(train_names_set)].reset_index(drop=True)
+        df_val = df_full_train[df_full_train["Image name"].isin(val_names_set)].reset_index(drop=True)
+
+        if len(df_train) != len(train_names_set):
+            raise ValueError(f"[SPLIT ERROR] Mismatch slicing train set: expected {len(train_names_set)}, got {len(df_train)}.")
+        if len(df_val) != len(val_names_set):
+            raise ValueError(f"[SPLIT ERROR] Mismatch slicing val set: expected {len(val_names_set)}, got {len(df_val)}.")
+
+        print(f"\n[Split Verification] Successfully loaded leakage-aware manifest: '{manifest_path}'")
+        print(f"  • Training samples  : {len(df_train)}")
+        print(f"  • Validation samples: {len(df_val)}")
+        print(f"  • Partition overlap : 0 (Strict Disjointness PASS)")
+        print(f"  • Duplicate cohesion: PASS (0 duplicate pairs cross train/val)")
+    elif split_type == "standard":
+        print(f"\n[WARNING] Using unconstrained StratifiedShuffleSplit. Duplicate pairs may cross train/val!")
         sss = StratifiedShuffleSplit(n_splits=1, test_size=val_ratio, random_state=seed)
         train_idx, val_idx = next(sss.split(df_full_train, strat_target))
         df_train = df_full_train.iloc[train_idx].reset_index(drop=True)
         df_val = df_full_train.iloc[val_idx].reset_index(drop=True)
+    else:
+        raise ValueError(f"[SPLIT ERROR] Unknown split_type '{split_type}'. Choose 'leakage_aware' or 'standard'.")
 
     # Optional test protocol: official (N=103) vs deduplicated (N=102, excluding IDRiD_064)
     test_protocol = config.get("data", {}).get("test_protocol", "official").lower()

@@ -1,0 +1,5 @@
+Model,Protocol,Test_Samples,Accuracy (%),QWK,Macro_F1,Weighted_F1,Multiclass_ROC_AUC,Best_Val_QWK,Best_Epoch,Metrics_JSON,Predictions_CSV
+ResNet-50,Official Benchmark,103,49.51,0.5579,0.367,0.4772,0.7668,0.785,5,outputs/metrics/resnet50_controlled_leakage_free_official_test_metrics.json,outputs/predictions/resnet50_controlled_leakage_free_official_predictions.csv
+ResNet-50,Sensitivity Analysis,102,50.0,0.5587,0.3706,0.482,0.7724,0.785,5,outputs/metrics/resnet50_controlled_leakage_free_deduplicated_test_metrics.json,outputs/predictions/resnet50_controlled_leakage_free_deduplicated_predictions.csv
+Compact Hybrid,Official Benchmark,103,49.51,0.5608,0.3934,0.485,0.7288,0.7407,12,outputs/metrics/compact_hybrid_controlled_leakage_free_official_test_metrics.json,outputs/predictions/compact_hybrid_controlled_leakage_free_official_predictions.csv
+Compact Hybrid,Sensitivity Analysis,102,50.0,0.5787,0.3973,0.4904,0.7337,0.7407,12,outputs/metrics/compact_hybrid_controlled_leakage_free_deduplicated_test_metrics.json,outputs/predictions/compact_hybrid_controlled_leakage_free_deduplicated_predictions.csv

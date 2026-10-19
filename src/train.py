@@ -49,27 +49,32 @@ def train_one_epoch(
     optimizer: torch.optim.Optimizer,
     device: torch.device,
     task: str = "five_class",
-    clip_norm: float = 1.0
+    clip_norm: float = 1.0,
+    grad_accum_steps: int = 1
 ) -> Tuple[float, float, float]:
-    """Train for a single epoch."""
+    """Train for a single epoch with optional gradient accumulation."""
     model.train()
     running_loss = 0.0
     all_preds = []
     all_targets = []
+    total_batches = len(dataloader)
 
-    for images, labels, _ in dataloader:
+    optimizer.zero_grad()
+    for step, (images, labels, _) in enumerate(dataloader):
         images = images.to(device)
         labels = labels.to(device)
 
-        optimizer.zero_grad()
         logits = model(images)
         loss = criterion(logits, labels)
 
-        loss.backward()
-        # Gradient clipping for stability
-        if clip_norm > 0:
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=clip_norm)
-        optimizer.step()
+        scaled_loss = loss / grad_accum_steps if grad_accum_steps > 1 else loss
+        scaled_loss.backward()
+
+        if (step + 1) % grad_accum_steps == 0 or (step + 1) == total_batches:
+            if clip_norm > 0:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=clip_norm)
+            optimizer.step()
+            optimizer.zero_grad()
 
         running_loss += loss.item() * images.size(0)
         preds = torch.argmax(logits, dim=1).detach().cpu().numpy()
@@ -263,6 +268,8 @@ def run_training(
             print(f"\n>>> [Gradual Unfreezing] Unfreezing CNN backbone at epoch {epoch}!")
             model.unfreeze_backbone()
 
+        grad_accum_steps = int(config["training"].get("grad_accum_steps", 1))
+
         epoch_start = time.time()
 
         train_loss, train_acc, train_qwk = train_one_epoch(
@@ -272,7 +279,8 @@ def run_training(
             optimizer=optimizer,
             device=device,
             task=config["task"]["type"],
-            clip_norm=clip_norm
+            clip_norm=clip_norm,
+            grad_accum_steps=grad_accum_steps
         )
 
         val_loss, val_metrics = evaluate_epoch(
@@ -406,6 +414,7 @@ if __name__ == "__main__":
     parser.add_argument("--loss_type", type=str, default=None, help="Loss function ('ce' or 'focal')")
     parser.add_argument("--focal_gamma", type=float, default=None, help="Focal loss gamma parameter")
     parser.add_argument("--split_type", type=str, default=None, help="Dataset split type ('standard' or 'leakage_aware')")
+    parser.add_argument("--split_manifest", type=str, default=None, help="Path to split manifest JSON file")
     parser.add_argument("--test_protocol", type=str, default=None, help="Test protocol ('official' or 'deduplicated')")
     parser.add_argument("--sampler_type", type=str, default=None, help="Data sampler type ('none' or 'weighted')")
     parser.add_argument("--sampler_power", type=float, default=None, help="Power exponent for weighted sampler")
@@ -419,6 +428,8 @@ if __name__ == "__main__":
     parser.add_argument("--task", type=str, default=None, help="Override task ('five_class' or 'binary')")
     parser.add_argument("--preprocessing", type=str, default=None, help="Override preprocessing ('clahe' or 'original')")
     parser.add_argument("--seed", type=int, default=None, help="Override seed")
+    parser.add_argument("--grad_accum_steps", type=int, default=None, help="Gradient accumulation steps")
+    parser.add_argument("--image_size", type=int, default=None, help="Override image resolution")
     parser.add_argument("--resume", type=str, default=None, help="Path to checkpoint to resume")
     args = parser.parse_args()
 
@@ -453,6 +464,8 @@ if __name__ == "__main__":
         cfg["training"]["focal_gamma"] = args.focal_gamma
     if args.split_type is not None:
         cfg.setdefault("data", {})["split_type"] = args.split_type
+    if args.split_manifest is not None:
+        cfg.setdefault("data", {})["split_manifest"] = args.split_manifest
     if args.test_protocol is not None:
         cfg.setdefault("data", {})["test_protocol"] = args.test_protocol
     if args.sampler_type is not None:
@@ -480,5 +493,9 @@ if __name__ == "__main__":
         cfg["preprocessing"]["method"] = args.preprocessing
     if args.seed:
         cfg["seed"] = args.seed
+    if args.grad_accum_steps is not None:
+        cfg.setdefault("training", {})["grad_accum_steps"] = args.grad_accum_steps
+    if args.image_size is not None:
+        cfg.setdefault("preprocessing", {})["image_size"] = args.image_size
 
     run_training(cfg, resume_checkpoint=args.resume)

@@ -1,0 +1,13 @@
+duplicate_group,image_id,split,official_grade,annotation_source,pair_label_match,review_status
+1,IDRiD_118,Training Set,0,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,LABEL_MISMATCH,REVIEW_CROSS_SPLIT_LEAKAGE
+1,IDRiD_064,Testing Set,3,B. Disease Grading/2. Groundtruths/b. IDRiD_Disease Grading_Testing Labels.csv,LABEL_MISMATCH,REVIEW_CROSS_SPLIT_LEAKAGE
+2,IDRiD_045,Training Set,2,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,MATCH,LABELS_MATCH_CHECK_PROVENANCE
+2,IDRiD_333,Training Set,2,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,MATCH,LABELS_MATCH_CHECK_PROVENANCE
+3,IDRiD_079,Training Set,1,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,MATCH,LABELS_MATCH_CHECK_PROVENANCE
+3,IDRiD_279,Training Set,1,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,MATCH,LABELS_MATCH_CHECK_PROVENANCE
+4,IDRiD_028,Training Set,4,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,LABEL_MISMATCH,MANUAL_REVIEW_REQUIRED
+4,IDRiD_327,Training Set,3,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,LABEL_MISMATCH,MANUAL_REVIEW_REQUIRED
+5,IDRiD_021,Training Set,1,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,LABEL_MISMATCH,MANUAL_REVIEW_REQUIRED
+5,IDRiD_391,Training Set,2,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,LABEL_MISMATCH,MANUAL_REVIEW_REQUIRED
+6,IDRiD_073,Training Set,2,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,MATCH,LABELS_MATCH_CHECK_PROVENANCE
+6,IDRiD_375,Training Set,2,B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv,MATCH,LABELS_MATCH_CHECK_PROVENANCE
