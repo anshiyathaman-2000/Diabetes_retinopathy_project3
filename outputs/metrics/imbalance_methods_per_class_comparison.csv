@@ -1,0 +1,36 @@
+Model,Imbalance Method,Class,Precision,Recall (Sensitivity),Specificity,F1-Score,Support
+ResNet-50,Unweighted CE Loss,No DR,0.7647,0.963,0.8571,0.8525,27
+ResNet-50,Unweighted CE Loss,Mild NPDR,0.0,0.0,1.0,0.0,4
+ResNet-50,Unweighted CE Loss,Moderate NPDR,0.6176,0.7778,0.7679,0.6885,27
+ResNet-50,Unweighted CE Loss,Severe NPDR,0.6364,0.4667,0.9412,0.5385,15
+ResNet-50,Unweighted CE Loss,PDR,0.75,0.3,0.9863,0.4286,10
+ResNet-50,Class-Weighted CE Loss (Sqrt),No DR,0.7879,0.963,0.875,0.8667,27
+ResNet-50,Class-Weighted CE Loss (Sqrt),Mild NPDR,0.5,0.25,0.9873,0.3333,4
+ResNet-50,Class-Weighted CE Loss (Sqrt),Moderate NPDR,0.6923,0.6667,0.8571,0.6792,27
+ResNet-50,Class-Weighted CE Loss (Sqrt),Severe NPDR,0.5,0.6,0.8676,0.5455,15
+ResNet-50,Class-Weighted CE Loss (Sqrt),PDR,0.75,0.3,0.9863,0.4286,10
+ResNet-50,WeightedRandomSampler,No DR,0.8065,0.9259,0.8929,0.8621,27
+ResNet-50,WeightedRandomSampler,Mild NPDR,0.25,0.25,0.962,0.25,4
+ResNet-50,WeightedRandomSampler,Moderate NPDR,0.76,0.7037,0.8929,0.7308,27
+ResNet-50,WeightedRandomSampler,Severe NPDR,0.6154,0.5333,0.9265,0.5714,15
+ResNet-50,WeightedRandomSampler,PDR,0.4,0.4,0.9178,0.4,10
+ResNet-50,Class-Weighted CE Loss (Inverse),No DR,0.8276,0.8889,0.9107,0.8571,27
+ResNet-50,Class-Weighted CE Loss (Inverse),Mild NPDR,0.2,0.25,0.9494,0.2222,4
+ResNet-50,Class-Weighted CE Loss (Inverse),Moderate NPDR,0.6667,0.6667,0.8393,0.6667,27
+ResNet-50,Class-Weighted CE Loss (Inverse),Severe NPDR,0.5556,0.6667,0.8824,0.6061,15
+ResNet-50,Class-Weighted CE Loss (Inverse),PDR,0.75,0.3,0.9863,0.4286,10
+CNN-Transformer-BiLSTM,Unweighted CE Loss,No DR,0.7419,0.8519,0.8571,0.7931,27
+CNN-Transformer-BiLSTM,Unweighted CE Loss,Mild NPDR,0.0,0.0,1.0,0.0,4
+CNN-Transformer-BiLSTM,Unweighted CE Loss,Moderate NPDR,0.5455,0.6667,0.7321,0.6,27
+CNN-Transformer-BiLSTM,Unweighted CE Loss,Severe NPDR,0.625,0.6667,0.9118,0.6452,15
+CNN-Transformer-BiLSTM,Unweighted CE Loss,PDR,0.6667,0.2,0.9863,0.3077,10
+CNN-Transformer-BiLSTM,Class-Weighted CE Loss (Sqrt),No DR,0.7667,0.8519,0.875,0.807,27
+CNN-Transformer-BiLSTM,Class-Weighted CE Loss (Sqrt),Mild NPDR,0.0,0.0,1.0,0.0,4
+CNN-Transformer-BiLSTM,Class-Weighted CE Loss (Sqrt),Moderate NPDR,0.5862,0.6296,0.7857,0.6071,27
+CNN-Transformer-BiLSTM,Class-Weighted CE Loss (Sqrt),Severe NPDR,0.4706,0.5333,0.8676,0.5,15
+CNN-Transformer-BiLSTM,Class-Weighted CE Loss (Sqrt),PDR,0.4286,0.3,0.9452,0.3529,10
+CNN-Transformer-BiLSTM,WeightedRandomSampler,No DR,0.8667,0.4815,0.9643,0.619,27
+CNN-Transformer-BiLSTM,WeightedRandomSampler,Mild NPDR,0.0,0.0,0.7975,0.0,4
+CNN-Transformer-BiLSTM,WeightedRandomSampler,Moderate NPDR,0.5,0.3333,0.8393,0.4,27
+CNN-Transformer-BiLSTM,WeightedRandomSampler,Severe NPDR,0.3333,0.1333,0.9412,0.1905,15
+CNN-Transformer-BiLSTM,WeightedRandomSampler,PDR,0.3214,0.9,0.7397,0.4737,10

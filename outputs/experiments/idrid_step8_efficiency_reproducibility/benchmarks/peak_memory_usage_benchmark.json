@@ -1,0 +1,41 @@
+{
+  "resnet50": {
+    "model_id": "resnet50",
+    "model_name": "ResNet-50 Baseline CNN",
+    "device": "mps",
+    "baseline_mem_mb": 0.0,
+    "model_weights_allocated_mb": 89.93,
+    "inference_bs1_allocated_mb": 90.68,
+    "inference_bs16_allocated_mb": 102.68,
+    "training_forward_allocated_mb": 1880.65,
+    "training_peak_allocated_mb": 230.52,
+    "mps_driver_allocated_mb": 2568.79,
+    "process_ru_maxrss_mb": 946032.0
+  },
+  "hybrid_compact": {
+    "model_id": "hybrid_compact",
+    "model_name": "CNN-Transformer-BiLSTM (Compact)",
+    "device": "mps",
+    "baseline_mem_mb": 0.0,
+    "model_weights_allocated_mb": 92.06,
+    "inference_bs1_allocated_mb": 92.81,
+    "inference_bs16_allocated_mb": 104.81,
+    "training_forward_allocated_mb": 1907.62,
+    "training_peak_allocated_mb": 244.72,
+    "mps_driver_allocated_mb": 2586.28,
+    "process_ru_maxrss_mb": 982224.0
+  },
+  "hybrid_full": {
+    "model_id": "hybrid_full",
+    "model_name": "CNN-Transformer-BiLSTM (Full)",
+    "device": "mps",
+    "baseline_mem_mb": 0.0,
+    "model_weights_allocated_mb": 97.5,
+    "inference_bs1_allocated_mb": 98.25,
+    "inference_bs16_allocated_mb": 110.25,
+    "training_forward_allocated_mb": 1958.98,
+    "training_peak_allocated_mb": 259.49,
+    "mps_driver_allocated_mb": 2757.29,
+    "process_ru_maxrss_mb": 1062280.0
+  }
+}

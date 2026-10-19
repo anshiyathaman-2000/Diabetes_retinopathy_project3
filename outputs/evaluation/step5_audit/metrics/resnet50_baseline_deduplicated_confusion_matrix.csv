@@ -1,0 +1,6 @@
+,Pred_No DR,Pred_Mild NPDR,Pred_Moderate NPDR,Pred_Severe NPDR,Pred_Proliferative DR
+True_No DR,27,1,5,1,0
+True_Mild NPDR,5,0,0,0,0
+True_Moderate NPDR,3,0,23,4,2
+True_Severe NPDR,1,0,6,7,4
+True_Proliferative DR,3,0,5,2,3

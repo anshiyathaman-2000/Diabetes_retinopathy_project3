@@ -1,0 +1,16 @@
+config_id,preprocessing_name,class_index,class_name,val_recall,val_f1,test_official_recall,test_official_f1,test_clean_recall,test_clean_f1
+original,Configuration 1: Original Fundus (ImageNet Norm),0,No DR,0.963,0.8966,0.7941,0.7397,0.7941,0.75
+original,Configuration 1: Original Fundus (ImageNet Norm),1,Mild NPDR,0.25,0.4,0.0,0.0,0.0,0.0
+original,Configuration 1: Original Fundus (ImageNet Norm),2,Moderate NPDR,0.5185,0.5091,0.6875,0.6111,0.6875,0.6111
+original,Configuration 1: Original Fundus (ImageNet Norm),3,Severe NPDR,0.5333,0.5,0.4211,0.4706,0.4444,0.4848
+original,Configuration 1: Original Fundus (ImageNet Norm),4,Proliferative DR,0.4,0.5,0.3077,0.3636,0.3077,0.3636
+standard_clahe,Configuration 2: Standard RGB CLAHE,0,No DR,0.8889,0.9057,0.6471,0.6567,0.6471,0.6667
+standard_clahe,Configuration 2: Standard RGB CLAHE,1,Mild NPDR,0.25,0.2857,0.0,0.0,0.0,0.0
+standard_clahe,Configuration 2: Standard RGB CLAHE,2,Moderate NPDR,0.5926,0.5614,0.6562,0.56,0.6562,0.56
+standard_clahe,Configuration 2: Standard RGB CLAHE,3,Severe NPDR,0.4,0.375,0.2105,0.2667,0.2222,0.2759
+standard_clahe,Configuration 2: Standard RGB CLAHE,4,Proliferative DR,0.3,0.3529,0.2308,0.25,0.2308,0.25
+existing_clahe,Configuration 3: Existing LAB Luminance CLAHE,0,No DR,1.0,0.8852,0.5588,0.5938,0.5588,0.5938
+existing_clahe,Configuration 3: Existing LAB Luminance CLAHE,1,Mild NPDR,0.0,0.0,0.0,0.0,0.0,0.0
+existing_clahe,Configuration 3: Existing LAB Luminance CLAHE,2,Moderate NPDR,0.4444,0.5,0.6562,0.5455,0.6562,0.5526
+existing_clahe,Configuration 3: Existing LAB Luminance CLAHE,3,Severe NPDR,0.5333,0.4324,0.4211,0.4103,0.4444,0.4211
+existing_clahe,Configuration 3: Existing LAB Luminance CLAHE,4,Proliferative DR,0.3,0.375,0.2308,0.2857,0.2308,0.2857

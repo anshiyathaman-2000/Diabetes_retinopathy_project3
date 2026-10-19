@@ -1,0 +1,38 @@
+{
+  "partitions": {
+    "train_samples": 330,
+    "val_samples": 83,
+    "official_test_samples": 103,
+    "clean_test_samples": 102
+  },
+  "disjointness_checks": {
+    "train_val_overlap_count": 0,
+    "train_val_overlap_items": [],
+    "train_val_is_strictly_disjoint": true,
+    "directory_isolation": {
+      "train_val_directory": "B. Disease Grading/1. Original Images/a. Training Set",
+      "test_directory": "B. Disease Grading/1. Original Images/b. Testing Set",
+      "directories_are_separate": true
+    }
+  },
+  "duplicate_image_handling": {
+    "duplicate_identified": "IDRiD_064",
+    "duplicate_source_train": "IDRiD_118",
+    "sha256_hash": "505330878f4d4186a71b8001570100b82b6b05cb431e81e2c259d8c584314708",
+    "official_protocol_sample_count": 103,
+    "clean_deduplicated_protocol_sample_count": 102,
+    "duplicate_removed_in_clean_protocol": true
+  },
+  "preprocessing_leakage_audit": {
+    "method": "CIELAB L* Channel CLAHE",
+    "fitting_scope": "instance_level_only (no global dataset fitting)",
+    "normalization": "Fixed ImageNet constants (mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])",
+    "leakage_detected": false
+  },
+  "model_selection_leakage_audit": {
+    "selection_criterion": "Maximum Validation Quadratic Weighted Kappa (QWK)",
+    "validation_sample_count": 83,
+    "test_set_used_for_selection": false,
+    "test_set_role": "Post-selection evaluation only"
+  }
+}

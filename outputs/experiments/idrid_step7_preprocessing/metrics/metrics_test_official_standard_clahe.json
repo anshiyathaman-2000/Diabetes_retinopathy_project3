@@ -1,0 +1,101 @@
+{
+  "accuracy": 0.4854368932038835,
+  "macro_precision": 0.35828047921071177,
+  "macro_recall": 0.34892087401762323,
+  "macro_f1": 0.3466766169154229,
+  "weighted_f1": 0.47150509587982414,
+  "quadratic_weighted_kappa": 0.5721811366629521,
+  "overall_roc_auc": 0.7847370994151028,
+  "overall_pr_auc": 0.4659325667191313,
+  "weighted_roc_auc": 0.8020943068476051,
+  "weighted_pr_auc": 0.558517476005092,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.6666666666666666,
+      "recall": 0.6470588235294118,
+      "recall_sensitivity": 0.6470588235294118,
+      "specificity": 0.8405797101449275,
+      "f1_score": 0.6567164179104478,
+      "support": 34,
+      "roc_auc": 0.8674339300937767,
+      "pr_auc": 0.6290012341854406
+    },
+    "Mild NPDR": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall_sensitivity": 0.0,
+      "specificity": 0.9489795918367347,
+      "f1_score": 0.0,
+      "support": 5,
+      "roc_auc": 0.7428571428571429,
+      "pr_auc": 0.12333392414037575
+    },
+    "Moderate NPDR": {
+      "precision": 0.4883720930232558,
+      "recall": 0.65625,
+      "recall_sensitivity": 0.65625,
+      "specificity": 0.6901408450704225,
+      "f1_score": 0.56,
+      "support": 32,
+      "roc_auc": 0.7588028169014085,
+      "pr_auc": 0.6278386930170793
+    },
+    "Severe NPDR": {
+      "precision": 0.36363636363636365,
+      "recall": 0.21052631578947367,
+      "recall_sensitivity": 0.21052631578947367,
+      "specificity": 0.9166666666666666,
+      "f1_score": 0.26666666666666666,
+      "support": 19,
+      "roc_auc": 0.8195488721804511,
+      "pr_auc": 0.5150655832808666
+    },
+    "Proliferative DR": {
+      "precision": 0.2727272727272727,
+      "recall": 0.23076923076923078,
+      "recall_sensitivity": 0.23076923076923078,
+      "specificity": 0.9111111111111111,
+      "f1_score": 0.25,
+      "support": 13,
+      "roc_auc": 0.7350427350427351,
+      "pr_auc": 0.43442339897189397
+    }
+  },
+  "confusion_matrix": [
+    [
+      22,
+      3,
+      8,
+      1,
+      0
+    ],
+    [
+      3,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      4,
+      2,
+      21,
+      3,
+      2
+    ],
+    [
+      2,
+      0,
+      7,
+      4,
+      6
+    ],
+    [
+      2,
+      0,
+      5,
+      3,
+      3
+    ]
+  ]
+}

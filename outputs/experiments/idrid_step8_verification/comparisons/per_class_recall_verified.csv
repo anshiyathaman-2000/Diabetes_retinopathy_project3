@@ -1,0 +1,16 @@
+model_id,model_name,class_name,val_recall,test_official_recall,test_clean_recall
+resnet50,ResNet-50 Baseline CNN,No DR,0.963,0.7941,0.7941
+resnet50,ResNet-50 Baseline CNN,Mild NPDR,0.25,0.0,0.0
+resnet50,ResNet-50 Baseline CNN,Moderate NPDR,0.6667,0.7188,0.7188
+resnet50,ResNet-50 Baseline CNN,Severe NPDR,0.6,0.3684,0.3889
+resnet50,ResNet-50 Baseline CNN,Proliferative DR,0.3,0.2308,0.2308
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),No DR,0.8519,0.5882,0.5882
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),Mild NPDR,0.0,0.0,0.0
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),Moderate NPDR,0.6296,0.4688,0.4688
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),Severe NPDR,0.5333,0.6316,0.6667
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),Proliferative DR,0.3,0.3077,0.3077
+hybrid_full,CNN-Transformer-BiLSTM (Full),No DR,0.7407,0.4118,0.4118
+hybrid_full,CNN-Transformer-BiLSTM (Full),Mild NPDR,0.0,0.2,0.2
+hybrid_full,CNN-Transformer-BiLSTM (Full),Moderate NPDR,0.3704,0.25,0.25
+hybrid_full,CNN-Transformer-BiLSTM (Full),Severe NPDR,0.4,0.2632,0.2778
+hybrid_full,CNN-Transformer-BiLSTM (Full),Proliferative DR,0.3,0.2308,0.2308

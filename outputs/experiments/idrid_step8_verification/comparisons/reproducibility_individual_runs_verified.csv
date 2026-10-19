@@ -1,0 +1,7 @@
+model_id,model_name,seed,epochs_trained,val_accuracy,val_macro_f1,val_qwk,test_clean_accuracy,test_clean_macro_f1,test_clean_qwk
+resnet50,ResNet-50 Baseline CNN,42,3,0.5663,0.2858,0.6246,0.4118,0.2266,0.3559
+resnet50,ResNet-50 Baseline CNN,123,3,0.6506,0.4668,0.7168,0.5588,0.4142,0.5343
+resnet50,ResNet-50 Baseline CNN,456,3,0.5542,0.2837,0.6057,0.4314,0.2651,0.33
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),42,3,0.4699,0.2676,0.4534,0.3922,0.2085,0.2641
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),123,3,0.4699,0.2272,0.3169,0.3431,0.1647,0.1016
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),456,3,0.3494,0.169,0.0698,0.3235,0.1554,0.0234

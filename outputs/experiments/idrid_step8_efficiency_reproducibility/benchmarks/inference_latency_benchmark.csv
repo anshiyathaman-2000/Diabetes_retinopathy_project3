@@ -1,0 +1,7 @@
+model_id,model_name,batch_size,input_resolution,device,num_warmup_runs,num_timed_runs,mean_latency_ms,std_latency_ms,median_p50_latency_ms,p95_latency_ms,p99_latency_ms,min_latency_ms,max_latency_ms,throughput_fps,slowdown_vs_resnet50
+resnet50,ResNet-50 Baseline CNN,1,256x256,mps,20,100,44.961,15.196,43.349,45.025,49.48,41.685,195.884,22.24,1.0
+resnet50,ResNet-50 Baseline CNN,16,256x256,mps,20,100,344.011,4.932,343.088,351.584,365.899,337.988,375.679,46.51,1.0
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),1,256x256,mps,20,100,53.795,1.796,53.437,57.234,59.678,51.048,61.967,18.59,1.196
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),16,256x256,mps,20,100,359.079,2.011,359.004,362.499,363.352,355.011,364.132,44.56,1.044
+hybrid_full,CNN-Transformer-BiLSTM (Full),1,256x256,mps,20,100,56.16,0.6,56.127,57.261,57.582,54.813,58.332,17.81,1.249
+hybrid_full,CNN-Transformer-BiLSTM (Full),16,256x256,mps,20,100,410.104,1.898,410.174,413.151,414.34,405.762,414.561,39.01,1.192

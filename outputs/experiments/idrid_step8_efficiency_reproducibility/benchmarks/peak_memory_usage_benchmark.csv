@@ -1,0 +1,4 @@
+model_id,model_name,device,baseline_mem_mb,model_weights_allocated_mb,inference_bs1_allocated_mb,inference_bs16_allocated_mb,training_forward_allocated_mb,training_peak_allocated_mb,mps_driver_allocated_mb,process_ru_maxrss_mb
+resnet50,ResNet-50 Baseline CNN,mps,0.0,89.93,90.68,102.68,1880.65,230.52,2568.79,946032.0
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),mps,0.0,92.06,92.81,104.81,1907.62,244.72,2586.28,982224.0
+hybrid_full,CNN-Transformer-BiLSTM (Full),mps,0.0,97.5,98.25,110.25,1958.98,259.49,2757.29,1062280.0

@@ -1,0 +1,14 @@
+{
+  "platform": "macOS-15.7.9-x86_64-i386-64bit",
+  "system": "Darwin",
+  "release": "24.6.0",
+  "machine": "x86_64",
+  "processor": "i386",
+  "python_version": "3.9.6",
+  "torch_version": "2.2.2",
+  "device_type": "mps",
+  "device_str": "mps",
+  "mps_available": true,
+  "cuda_available": false,
+  "memory_mechanism": "Apple Unified Memory Architecture (UMA) via MPS Driver"
+}

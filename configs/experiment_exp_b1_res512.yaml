@@ -1,0 +1,75 @@
+# Configuration for Exp B1: ResNet-50 Resolution Comparison (512x512)
+project_name: "idrid_dr_detection"
+experiment_name: "exp_b1_res512"
+seed: 42
+exp_suffix: "exp_b1_res512"
+
+# Data Paths & Strict Leakage Control
+data:
+  base_dir: "B. Disease Grading"
+  train_images_dir: "B. Disease Grading/1. Original Images/a. Training Set"
+  train_csv: "B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv"
+  test_images_dir: "B. Disease Grading/1. Original Images/b. Testing Set"
+  test_csv: "B. Disease Grading/2. Groundtruths/b. IDRiD_Disease Grading_Testing Labels.csv"
+  val_split_ratio: 0.20
+  split_type: "leakage_aware"
+  split_manifest: "data/splits/leakage_aware_split_manifest.json" # Identical to baseline
+  cache_dir: "data/cache"
+  num_workers: 0
+
+# Task Configuration
+task:
+  type: "five_class"
+  num_classes: 5
+  binary_threshold: 2
+
+# Preprocessing & Augmentation
+preprocessing:
+  image_size: 512 # EXPERIMENTAL VARIABLE: 512x512 vs Baseline 256x256
+  method: "clahe"
+  clahe_clip_limit: 2.0
+  clahe_tile_grid_size: [8, 8]
+  normalization:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+  augmentation:
+    horizontal_flip_prob: 0.5
+    vertical_flip_prob: 0.5
+    rotation_degrees: 15
+    brightness_jitter: 0.1
+    contrast_jitter: 0.1
+
+# Model Architecture
+model:
+  name: "resnet50"
+  pretrained: true
+  dropout: 0.3
+
+# Training Hyperparameters
+training:
+  batch_size: 8            # Micro-batch size to fit in Apple Silicon MPS memory pool
+  grad_accum_steps: 2      # Gradient accumulation steps: 8 * 2 = 16 effective batch size
+  epochs: 15
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  optimizer: "adamw"
+  lr_scheduler: "cosine"
+  use_class_weights: true
+  class_weight_method: "sqrt"
+  early_stopping:
+    enabled: true
+    patience: 7
+    monitor_metric: "val_qwk"
+    mode: "max"
+
+# Hardware
+hardware:
+  device: "auto"
+
+# Output directories
+paths:
+  checkpoints_dir: "checkpoints"
+  metrics_dir: "outputs/metrics"
+  plots_dir: "outputs/plots"
+  predictions_dir: "outputs/predictions"
+  explainability_dir: "outputs/explainability"

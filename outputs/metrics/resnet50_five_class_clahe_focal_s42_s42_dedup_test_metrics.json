@@ -1,0 +1,101 @@
+{
+  "accuracy": 0.5882352941176471,
+  "macro_precision": 0.49257673963556325,
+  "macro_recall": 0.461210407239819,
+  "macro_f1": 0.46538494122630514,
+  "weighted_f1": 0.5683958757706196,
+  "quadratic_weighted_kappa": 0.6566463128229215,
+  "overall_roc_auc": 0.8011002088132182,
+  "overall_pr_auc": null,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.7027027027027027,
+      "recall_sensitivity": 0.7647058823529411,
+      "specificity": 0.8382352941176471,
+      "f1_score": 0.7323943661971831,
+      "support": 34,
+      "roc_auc": 0.8801903114186851,
+      "pr_auc": 0.7060830689201947
+    },
+    "Mild NPDR": {
+      "precision": 0.3333333333333333,
+      "recall_sensitivity": 0.2,
+      "specificity": 0.979381443298969,
+      "f1_score": 0.25,
+      "support": 5,
+      "roc_auc": 0.7917525773195877,
+      "pr_auc": 0.19601529682174845
+    },
+    "Moderate NPDR": {
+      "precision": 0.5641025641025641,
+      "recall_sensitivity": 0.6875,
+      "specificity": 0.7571428571428571,
+      "f1_score": 0.6197183098591549,
+      "support": 32,
+      "roc_auc": 0.7625,
+      "pr_auc": 0.5676352541030133
+    },
+    "Severe NPDR": {
+      "precision": 0.5294117647058824,
+      "recall_sensitivity": 0.5,
+      "specificity": 0.9047619047619048,
+      "f1_score": 0.5142857142857142,
+      "support": 18,
+      "roc_auc": 0.8571428571428571,
+      "pr_auc": 0.5793694531684729
+    },
+    "Proliferative DR": {
+      "precision": 0.3333333333333333,
+      "recall_sensitivity": 0.15384615384615385,
+      "specificity": 0.9550561797752809,
+      "f1_score": 0.21052631578947367,
+      "support": 13,
+      "roc_auc": 0.7139152981849611,
+      "pr_auc": 0.3397693545478416
+    }
+  },
+  "confusion_matrix": [
+    [
+      26,
+      1,
+      7,
+      0,
+      0
+    ],
+    [
+      4,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      22,
+      5,
+      0
+    ],
+    [
+      0,
+      1,
+      4,
+      9,
+      4
+    ],
+    [
+      2,
+      0,
+      6,
+      3,
+      2
+    ]
+  ],
+  "total_parameters": 23518277,
+  "total_eval_time_seconds": 3.3472867012023926,
+  "avg_inference_time_per_image_ms": 32.81653628629797,
+  "model_name": "resnet50",
+  "preprocessing": "clahe",
+  "seed": 42,
+  "task": "five_class"
+}

@@ -1,0 +1,4 @@
+method_key,method_label,num_samples,mean_total_latency_ms,std_total_latency_ms,min_total_latency_ms,max_total_latency_ms,mean_preprocessing_only_ms,std_preprocessing_only_ms,throughput_fps,relative_total_slowdown_vs_original,relative_prep_slowdown_vs_original
+original,Configuration 1: Original Fundus,20,752.31,25.38,730.76,837.48,634.05,22.13,1.33,1.0,1.0
+standard_clahe,Configuration 2: Standard RGB CLAHE,20,598.37,25.7,571.9,666.37,461.66,12.82,1.67,0.8,0.73
+clahe,Configuration 3: Existing LAB Luminance CLAHE,20,595.72,36.44,561.17,741.57,473.29,35.69,1.68,0.79,0.75

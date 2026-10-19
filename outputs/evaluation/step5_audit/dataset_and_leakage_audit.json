@@ -1,0 +1,86 @@
+{
+  "dataset_verification": {
+    "official_training_samples": 413,
+    "official_testing_samples": 103,
+    "total_samples": 516,
+    "training_class_distribution": {
+      "No DR": 134,
+      "Mild NPDR": 20,
+      "Moderate NPDR": 136,
+      "Severe NPDR": 74,
+      "Proliferative DR": 49
+    },
+    "testing_class_distribution": {
+      "No DR": 34,
+      "Mild NPDR": 5,
+      "Moderate NPDR": 32,
+      "Severe NPDR": 19,
+      "Proliferative DR": 13
+    },
+    "all_training_images_present": true,
+    "all_testing_images_present": true
+  },
+  "duplicate_and_leakage_audit": {
+    "cross_split_duplicate": {
+      "train_image": "IDRiD_118",
+      "train_path": "B. Disease Grading/1. Original Images/a. Training Set/IDRiD_118.jpg",
+      "test_image": "IDRiD_064",
+      "test_path": "B. Disease Grading/1. Original Images/b. Testing Set/IDRiD_064.jpg",
+      "md5_match": true,
+      "sha256_match": true,
+      "size_match": true,
+      "train_grade": 0,
+      "test_grade": 3,
+      "has_conflicting_label": true
+    },
+    "intra_training_duplicates": [
+      {
+        "image_1": "IDRiD_375",
+        "image_2": "IDRiD_073",
+        "hash_identical": true,
+        "grade_1": 2,
+        "grade_2": 2,
+        "label_conflict": false
+      },
+      {
+        "image_1": "IDRiD_333",
+        "image_2": "IDRiD_045",
+        "hash_identical": true,
+        "grade_1": 2,
+        "grade_2": 2,
+        "label_conflict": false
+      },
+      {
+        "image_1": "IDRiD_028",
+        "image_2": "IDRiD_327",
+        "hash_identical": true,
+        "grade_1": 4,
+        "grade_2": 3,
+        "label_conflict": true
+      },
+      {
+        "image_1": "IDRiD_079",
+        "image_2": "IDRiD_279",
+        "hash_identical": true,
+        "grade_1": 1,
+        "grade_2": 1,
+        "label_conflict": false
+      },
+      {
+        "image_1": "IDRiD_021",
+        "image_2": "IDRiD_391",
+        "hash_identical": true,
+        "grade_1": 1,
+        "grade_2": 2,
+        "label_conflict": true
+      }
+    ],
+    "leakage_checks": {
+      "training_augmentation_isolated": true,
+      "validation_deterministic_transforms": true,
+      "test_deterministic_transforms": true,
+      "class_weights_isolated_to_train": true,
+      "test_set_untouched_during_selection": true
+    }
+  }
+}

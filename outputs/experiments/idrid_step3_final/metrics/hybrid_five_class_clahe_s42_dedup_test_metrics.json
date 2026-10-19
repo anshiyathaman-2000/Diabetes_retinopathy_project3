@@ -1,0 +1,101 @@
+{
+  "accuracy": 0.30392156862745096,
+  "macro_precision": 0.2771734892787524,
+  "macro_recall": 0.2740623428858723,
+  "macro_f1": 0.26392788610724965,
+  "weighted_f1": 0.32082054060044873,
+  "quadratic_weighted_kappa": 0.39397336442312014,
+  "overall_roc_auc": 0.6773355035592032,
+  "overall_pr_auc": null,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.5185185185185185,
+      "recall_sensitivity": 0.4117647058823529,
+      "specificity": 0.8088235294117647,
+      "f1_score": 0.45901639344262296,
+      "support": 34,
+      "roc_auc": 0.7240484429065743,
+      "pr_auc": 0.5667793143797565
+    },
+    "Mild NPDR": {
+      "precision": 0.1111111111111111,
+      "recall_sensitivity": 0.2,
+      "specificity": 0.9175257731958762,
+      "f1_score": 0.14285714285714285,
+      "support": 5,
+      "roc_auc": 0.6680412371134021,
+      "pr_auc": 0.09226489161973034
+    },
+    "Moderate NPDR": {
+      "precision": 0.42105263157894735,
+      "recall_sensitivity": 0.25,
+      "specificity": 0.8428571428571429,
+      "f1_score": 0.3137254901960784,
+      "support": 32,
+      "roc_auc": 0.6241071428571429,
+      "pr_auc": 0.4127190884044834
+    },
+    "Severe NPDR": {
+      "precision": 0.18518518518518517,
+      "recall_sensitivity": 0.2777777777777778,
+      "specificity": 0.7380952380952381,
+      "f1_score": 0.2222222222222222,
+      "support": 18,
+      "roc_auc": 0.691137566137566,
+      "pr_auc": 0.27816414488309155
+    },
+    "Proliferative DR": {
+      "precision": 0.15,
+      "recall_sensitivity": 0.23076923076923078,
+      "specificity": 0.8089887640449438,
+      "f1_score": 0.18181818181818182,
+      "support": 13,
+      "roc_auc": 0.6793431287813311,
+      "pr_auc": 0.23094799596334378
+    }
+  },
+  "confusion_matrix": [
+    [
+      14,
+      6,
+      5,
+      5,
+      4
+    ],
+    [
+      2,
+      1,
+      2,
+      0,
+      0
+    ],
+    [
+      8,
+      1,
+      8,
+      9,
+      6
+    ],
+    [
+      2,
+      1,
+      3,
+      5,
+      7
+    ],
+    [
+      1,
+      0,
+      1,
+      8,
+      3
+    ]
+  ],
+  "total_parameters": 25503045,
+  "total_eval_time_seconds": 3.403809070587158,
+  "avg_inference_time_per_image_ms": 33.370677162619195,
+  "model_name": "hybrid",
+  "preprocessing": "clahe",
+  "seed": 42,
+  "task": "five_class"
+}

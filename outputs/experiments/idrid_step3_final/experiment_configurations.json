@@ -1,0 +1,82 @@
+[
+  {
+    "model_id": "resnet50_unweighted_baseline",
+    "name": "ResNet-50 Baseline (Unweighted)",
+    "role": "Initial CNN Baseline",
+    "task": "five_class",
+    "checkpoint_path": "checkpoints/resnet50_five_class_clahe_s42_best.pt",
+    "total_parameters": 23518277,
+    "official_test_samples": 103,
+    "deduplicated_test_samples": 102
+  },
+  {
+    "model_id": "resnet50_sqrt_cw_baseline",
+    "name": "ResNet-50 (Sqrt CW)",
+    "role": "Step 1 Enhanced CNN",
+    "task": "five_class",
+    "checkpoint_path": "checkpoints/resnet50_five_class_clahe_sqrt_cw_s42_best.pt",
+    "total_parameters": 23518277,
+    "official_test_samples": 103,
+    "deduplicated_test_samples": 102
+  },
+  {
+    "model_id": "hybrid_initial_v1",
+    "name": "Hybrid Initial v1 (Overparameterized)",
+    "role": "Initial Hybrid Baseline",
+    "task": "five_class",
+    "checkpoint_path": "checkpoints/hybrid_five_class_clahe_s42_best.pt",
+    "total_parameters": 25503045,
+    "official_test_samples": 103,
+    "deduplicated_test_samples": 102
+  },
+  {
+    "model_id": "cnn_transformer_ablation",
+    "name": "CNN-Transformer (No BiLSTM)",
+    "role": "Architectural Ablation 1",
+    "task": "five_class",
+    "checkpoint_path": "checkpoints/cnn_transformer_five_class_clahe_ablation_transformer_s42_best.pt",
+    "total_parameters": 23978181,
+    "official_test_samples": 103,
+    "deduplicated_test_samples": 102
+  },
+  {
+    "model_id": "cnn_bilstm_ablation",
+    "name": "CNN-BiLSTM (No Transformer)",
+    "role": "Architectural Ablation 2",
+    "task": "five_class",
+    "checkpoint_path": "checkpoints/cnn_bilstm_five_class_clahe_ablation_bilstm_s42_best.pt",
+    "total_parameters": 23878981,
+    "official_test_samples": 103,
+    "deduplicated_test_samples": 102
+  },
+  {
+    "model_id": "hybrid_compact_sqrt_cw",
+    "name": "Corrected Compact Hybrid (v2)",
+    "role": "Corrected Hybrid Proposed",
+    "task": "five_class",
+    "checkpoint_path": "checkpoints/hybrid_five_class_clahe_compact_sqrt_cw_s42_best.pt",
+    "total_parameters": 24077509,
+    "official_test_samples": 103,
+    "deduplicated_test_samples": 102
+  },
+  {
+    "model_id": "resnet50_focal_loss",
+    "name": "ResNet-50 Focal Loss (gamma=2.0)",
+    "role": "Step 2 Focal Loss Model",
+    "task": "five_class",
+    "checkpoint_path": "checkpoints/resnet50_five_class_clahe_focal_s42_s42_best.pt",
+    "total_parameters": 23518277,
+    "official_test_samples": 103,
+    "deduplicated_test_samples": 102
+  },
+  {
+    "model_id": "resnet50_binary_referable",
+    "name": "ResNet-50 Binary Referable DR",
+    "role": "Clinical Triage Task",
+    "task": "binary",
+    "checkpoint_path": "checkpoints/resnet50_binary_clahe_binary_referable_s42_s42_best.pt",
+    "total_parameters": 23512130,
+    "official_test_samples": 103,
+    "deduplicated_test_samples": 102
+  }
+]

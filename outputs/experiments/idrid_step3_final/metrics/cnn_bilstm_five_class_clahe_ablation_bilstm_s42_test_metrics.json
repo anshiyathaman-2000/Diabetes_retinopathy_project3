@@ -1,0 +1,101 @@
+{
+  "accuracy": 0.3883495145631068,
+  "macro_precision": 0.29,
+  "macro_recall": 0.26180489402238627,
+  "macro_f1": 0.24395046439628482,
+  "weighted_f1": 0.34676485617241276,
+  "quadratic_weighted_kappa": 0.3130496370182376,
+  "overall_roc_auc": 0.7126555384660135,
+  "overall_pr_auc": null,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.5333333333333333,
+      "recall_sensitivity": 0.47058823529411764,
+      "specificity": 0.7971014492753623,
+      "f1_score": 0.5,
+      "support": 34,
+      "roc_auc": 0.7463768115942029,
+      "pr_auc": 0.5847774146068697
+    },
+    "Mild NPDR": {
+      "precision": 0.0,
+      "recall_sensitivity": 0.0,
+      "specificity": 1.0,
+      "f1_score": 0.0,
+      "support": 5,
+      "roc_auc": 0.7387755102040817,
+      "pr_auc": 0.10186274509803922
+    },
+    "Moderate NPDR": {
+      "precision": 0.3333333333333333,
+      "recall_sensitivity": 0.65625,
+      "specificity": 0.4084507042253521,
+      "f1_score": 0.4421052631578947,
+      "support": 32,
+      "roc_auc": 0.6095950704225351,
+      "pr_auc": 0.4858443450626733
+    },
+    "Severe NPDR": {
+      "precision": 0.3333333333333333,
+      "recall_sensitivity": 0.10526315789473684,
+      "specificity": 0.9523809523809523,
+      "f1_score": 0.16,
+      "support": 19,
+      "roc_auc": 0.7155388471177945,
+      "pr_auc": 0.35876117608823466
+    },
+    "Proliferative DR": {
+      "precision": 0.25,
+      "recall_sensitivity": 0.07692307692307693,
+      "specificity": 0.9666666666666667,
+      "f1_score": 0.11764705882352941,
+      "support": 13,
+      "roc_auc": 0.752991452991453,
+      "pr_auc": 0.33157278128365986
+    }
+  },
+  "confusion_matrix": [
+    [
+      16,
+      0,
+      16,
+      0,
+      2
+    ],
+    [
+      3,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      8,
+      0,
+      21,
+      2,
+      1
+    ],
+    [
+      2,
+      0,
+      15,
+      2,
+      0
+    ],
+    [
+      1,
+      0,
+      9,
+      2,
+      1
+    ]
+  ],
+  "total_parameters": 23878981,
+  "total_eval_time_seconds": 3.0818727016448975,
+  "avg_inference_time_per_image_ms": 29.921094190727157,
+  "model_name": "cnn_bilstm",
+  "preprocessing": "clahe",
+  "seed": 42,
+  "task": "five_class"
+}

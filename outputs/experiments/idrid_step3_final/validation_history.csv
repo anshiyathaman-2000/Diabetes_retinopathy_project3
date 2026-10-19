@@ -1,0 +1,94 @@
+Model,Epoch,Train_Loss,Val_Loss,Val_Accuracy,Val_QWK,Val_Macro_F1,Is_Best_Checkpoint_Epoch
+ResNet-50 Baseline (Unweighted),1,1.5593,1.5176,42.17,0.5361,0.2896,False
+ResNet-50 Baseline (Unweighted),2,1.3959,1.3845,53.01,0.6863,0.3634,False
+ResNet-50 Baseline (Unweighted),3,1.2311,1.204,59.04,0.7468,0.4317,False
+ResNet-50 Baseline (Unweighted),4,1.1016,1.1485,62.65,0.7797,0.5261,False
+ResNet-50 Baseline (Unweighted),5,0.9378,1.0808,61.45,0.7869,0.5046,False
+ResNet-50 Baseline (Unweighted),6,0.8227,1.0499,62.65,0.7543,0.4487,False
+ResNet-50 Baseline (Unweighted),7,0.7502,1.0628,65.06,0.7388,0.5646,False
+ResNet-50 Baseline (Unweighted),8,0.6533,1.1847,65.06,0.7482,0.4649,False
+ResNet-50 Baseline (Unweighted),9,0.5377,1.1297,65.06,0.795,0.5285,False
+ResNet-50 Baseline (Unweighted),10,0.5039,1.1452,65.06,0.747,0.5321,False
+ResNet-50 Baseline (Unweighted),11,0.4612,1.0587,67.47,0.8408,0.5561,True
+ResNet-50 (Sqrt CW),1,1.5329,1.4466,51.81,0.4165,0.2564,False
+ResNet-50 (Sqrt CW),2,1.3505,1.2739,60.24,0.5295,0.3336,False
+ResNet-50 (Sqrt CW),3,1.1701,1.1293,59.04,0.6898,0.3667,False
+ResNet-50 (Sqrt CW),4,1.0504,1.0833,65.06,0.7339,0.4531,False
+ResNet-50 (Sqrt CW),5,0.8897,1.0574,61.45,0.7167,0.4586,False
+ResNet-50 (Sqrt CW),6,0.7957,0.9978,66.27,0.7854,0.4728,False
+ResNet-50 (Sqrt CW),7,0.7245,1.0558,63.86,0.7683,0.5227,False
+ResNet-50 (Sqrt CW),8,0.6066,1.1116,66.27,0.7228,0.5376,False
+ResNet-50 (Sqrt CW),9,0.5454,0.9466,69.88,0.7664,0.5903,False
+ResNet-50 (Sqrt CW),10,0.4789,1.0099,68.67,0.725,0.5674,False
+ResNet-50 (Sqrt CW),11,0.4543,1.0162,69.88,0.7877,0.5793,False
+ResNet-50 (Sqrt CW),12,0.429,1.0647,67.47,0.709,0.5611,False
+ResNet-50 (Sqrt CW),13,0.434,0.9744,68.67,0.8107,0.5707,True
+Hybrid Initial v1,1,1.6961,1.5551,28.92,0.1994,0.2045,False
+Hybrid Initial v1,2,1.5906,1.5039,38.55,0.3584,0.3009,False
+Hybrid Initial v1,3,1.5868,1.4788,44.58,0.4545,0.3315,False
+Hybrid Initial v1,4,1.5712,1.4409,54.22,0.4986,0.3665,False
+Hybrid Initial v1,5,1.4484,1.4014,46.99,0.4627,0.3471,False
+Hybrid Initial v1,6,1.3991,1.3563,51.81,0.5598,0.4009,False
+Hybrid Initial v1,7,1.3837,1.3856,46.99,0.5487,0.3753,False
+Hybrid Initial v1,8,1.3491,1.364,45.78,0.5391,0.3175,False
+Hybrid Initial v1,9,1.2927,1.3454,49.4,0.5616,0.3749,False
+Hybrid Initial v1,10,1.2898,1.3432,48.19,0.5788,0.361,False
+Hybrid Initial v1,11,1.3172,1.339,49.4,0.5903,0.3786,False
+Hybrid Initial v1,12,1.2485,1.3433,49.4,0.6093,0.4122,True
+CNN-Transformer (No BiLSTM),1,1.7406,1.6004,31.33,-0.1956,0.1574,False
+CNN-Transformer (No BiLSTM),2,1.6121,1.4939,42.17,0.1406,0.1905,False
+CNN-Transformer (No BiLSTM),3,1.5536,1.366,53.01,0.5614,0.3221,False
+CNN-Transformer (No BiLSTM),4,1.3953,1.2732,59.04,0.5326,0.3463,False
+CNN-Transformer (No BiLSTM),5,1.3319,1.2115,55.42,0.5579,0.3807,False
+CNN-Transformer (No BiLSTM),6,1.2418,1.1968,50.6,0.5835,0.3204,False
+CNN-Transformer (No BiLSTM),7,1.2296,1.1477,60.24,0.6433,0.4294,False
+CNN-Transformer (No BiLSTM),8,1.1773,1.1275,57.83,0.6822,0.4072,False
+CNN-Transformer (No BiLSTM),9,1.1701,1.1534,56.63,0.6445,0.383,False
+CNN-Transformer (No BiLSTM),10,1.1829,1.12,60.24,0.715,0.4224,True
+CNN-BiLSTM (No Transformer),1,1.6681,1.5086,40.96,0.281,0.2034,False
+CNN-BiLSTM (No Transformer),2,1.5958,1.4789,42.17,0.4514,0.2411,False
+CNN-BiLSTM (No Transformer),3,1.547,1.4406,53.01,0.4644,0.2603,False
+CNN-BiLSTM (No Transformer),4,1.511,1.3987,54.22,0.4345,0.2643,False
+CNN-BiLSTM (No Transformer),5,1.477,1.3748,53.01,0.4888,0.2648,False
+CNN-BiLSTM (No Transformer),6,1.4486,1.3468,54.22,0.446,0.2638,False
+CNN-BiLSTM (No Transformer),7,1.4101,1.3215,53.01,0.5172,0.2815,False
+CNN-BiLSTM (No Transformer),8,1.3555,1.3033,51.81,0.5248,0.2571,False
+CNN-BiLSTM (No Transformer),9,1.3363,1.3113,54.22,0.5368,0.287,False
+CNN-BiLSTM (No Transformer),10,1.3408,1.2982,55.42,0.5481,0.3446,False
+CNN-BiLSTM (No Transformer),11,1.3324,1.2955,53.01,0.536,0.2968,False
+CNN-BiLSTM (No Transformer),12,1.3303,1.2938,54.22,0.5543,0.3358,False
+CNN-BiLSTM (No Transformer),13,1.3291,1.2873,56.63,0.5763,0.3551,False
+CNN-BiLSTM (No Transformer),14,1.2684,1.2936,56.63,0.5918,0.3549,True
+Corrected Compact Hybrid (v2),1,1.6199,1.5071,33.73,0.4451,0.2364,False
+Corrected Compact Hybrid (v2),2,1.4969,1.359,50.6,0.4904,0.2556,False
+Corrected Compact Hybrid (v2),3,1.3744,1.2492,56.63,0.649,0.3888,False
+Corrected Compact Hybrid (v2),4,1.2925,1.2208,59.04,0.7,0.4177,False
+Corrected Compact Hybrid (v2),5,1.2121,1.2163,59.04,0.6734,0.4015,False
+Corrected Compact Hybrid (v2),6,1.1595,1.1743,56.63,0.6644,0.3662,False
+Corrected Compact Hybrid (v2),7,1.177,1.1827,59.04,0.685,0.4272,False
+Corrected Compact Hybrid (v2),8,1.1323,1.1234,57.83,0.7176,0.4078,False
+Corrected Compact Hybrid (v2),9,1.0897,1.1144,60.24,0.7321,0.4272,False
+Corrected Compact Hybrid (v2),10,1.1421,1.1347,61.45,0.7442,0.4542,False
+Corrected Compact Hybrid (v2),11,1.1633,1.1201,61.45,0.7594,0.4534,True
+ResNet-50 Focal Loss,1,0.9054,0.8449,50.6,0.393,0.2501,False
+ResNet-50 Focal Loss,2,0.7433,0.7452,55.42,0.5614,0.3292,False
+ResNet-50 Focal Loss,3,0.6068,0.6185,62.65,0.7201,0.4438,False
+ResNet-50 Focal Loss,4,0.4971,0.5964,65.06,0.765,0.4589,False
+ResNet-50 Focal Loss,5,0.3807,0.5927,67.47,0.7535,0.5489,False
+ResNet-50 Focal Loss,6,0.3103,0.5411,61.45,0.7289,0.5166,False
+ResNet-50 Focal Loss,7,0.262,0.6237,63.86,0.7838,0.5171,False
+ResNet-50 Focal Loss,8,0.1851,0.6597,68.67,0.7746,0.4841,False
+ResNet-50 Focal Loss,9,0.1578,0.5887,68.67,0.8136,0.5403,True
+ResNet-50 Binary Referable,1,0.6012,0.401,90.36,0.7827,0.8902,False
+ResNet-50 Binary Referable,2,0.4075,0.24,93.98,0.8687,0.9343,False
+ResNet-50 Binary Referable,3,0.3241,0.1661,92.77,0.8495,0.9245,False
+ResNet-50 Binary Referable,4,0.2343,0.132,97.59,0.9485,0.9743,False
+ResNet-50 Binary Referable,5,0.1632,0.0879,96.39,0.9233,0.9616,False
+ResNet-50 Binary Referable,6,0.1745,0.0587,97.59,0.9485,0.9743,False
+ResNet-50 Binary Referable,7,0.1386,0.0655,97.59,0.9485,0.9743,False
+ResNet-50 Binary Referable,8,0.1423,0.0469,98.8,0.9744,0.9872,False
+ResNet-50 Binary Referable,9,0.1209,0.0703,96.39,0.9242,0.9621,False
+ResNet-50 Binary Referable,10,0.1009,0.062,95.18,0.897,0.9485,False
+ResNet-50 Binary Referable,11,0.0331,0.093,95.18,0.897,0.9485,False
+ResNet-50 Binary Referable,12,0.0547,0.0727,96.39,0.9223,0.9611,False
+ResNet-50 Binary Referable,13,0.1034,0.0465,100.0,1.0,1.0,True

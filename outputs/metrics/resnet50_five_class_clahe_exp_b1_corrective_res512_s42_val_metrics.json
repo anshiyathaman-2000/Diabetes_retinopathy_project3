@@ -1,0 +1,104 @@
+{
+  "accuracy": 0.6867469879518072,
+  "macro_precision": 0.5130621325282059,
+  "macro_recall": 0.5199999999999999,
+  "macro_f1": 0.5123680840523084,
+  "weighted_f1": 0.6623631681923476,
+  "quadratic_weighted_kappa": 0.8518588842896746,
+  "overall_roc_auc": 0.8710215388584966,
+  "overall_pr_auc": 0.6095055292154639,
+  "weighted_roc_auc": 0.9085325046450041,
+  "weighted_pr_auc": 0.7525927799932176,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.8387096774193549,
+      "recall": 0.9629629629629629,
+      "recall_sensitivity": 0.9629629629629629,
+      "specificity": 0.9107142857142857,
+      "f1_score": 0.896551724137931,
+      "support": 27,
+      "roc_auc": 0.9636243386243386,
+      "pr_auc": 0.9095312567641625
+    },
+    "Mild NPDR": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall_sensitivity": 0.0,
+      "specificity": 1.0,
+      "f1_score": 0.0,
+      "support": 4,
+      "roc_auc": 0.6914556962025317,
+      "pr_auc": 0.1002913752913753
+    },
+    "Moderate NPDR": {
+      "precision": 0.6551724137931034,
+      "recall": 0.7037037037037037,
+      "recall_sensitivity": 0.7037037037037037,
+      "specificity": 0.8214285714285714,
+      "f1_score": 0.6785714285714286,
+      "support": 27,
+      "roc_auc": 0.8859126984126984,
+      "pr_auc": 0.8182424279671243
+    },
+    "Severe NPDR": {
+      "precision": 0.5,
+      "recall": 0.5333333333333333,
+      "recall_sensitivity": 0.5333333333333333,
+      "specificity": 0.8823529411764706,
+      "f1_score": 0.5161290322580645,
+      "support": 15,
+      "roc_auc": 0.9127450980392157,
+      "pr_auc": 0.6439039779960496
+    },
+    "PDR": {
+      "precision": 0.5714285714285714,
+      "recall": 0.4,
+      "recall_sensitivity": 0.4,
+      "specificity": 0.958904109589041,
+      "f1_score": 0.47058823529411764,
+      "support": 10,
+      "roc_auc": 0.9013698630136987,
+      "pr_auc": 0.575558608058608
+    }
+  },
+  "confusion_matrix": [
+    [
+      26,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      3,
+      0,
+      19,
+      4,
+      1
+    ],
+    [
+      0,
+      0,
+      5,
+      8,
+      2
+    ],
+    [
+      0,
+      0,
+      2,
+      4,
+      4
+    ]
+  ],
+  "best_validation_metric": 0.8518588842896746,
+  "monitor_metric": "val_qwk",
+  "total_training_time_seconds": 16850.068602085114
+}

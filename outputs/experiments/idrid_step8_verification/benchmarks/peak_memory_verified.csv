@@ -1,0 +1,4 @@
+model_id,model_name,device,memory_hardware,weights_allocated_mb,inference_bs16_allocated_mb,training_forward_allocated_mb,training_peak_allocated_mb,mps_driver_allocated_mb,process_ru_maxrss_mb
+resnet50,ResNet-50 Baseline CNN,mps,Apple Silicon Unified Memory Architecture,89.93,101.93,1860.53,226.6,2584.97,885872.0
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),mps,Apple Silicon Unified Memory Architecture,92.07,104.07,1889.35,243.07,2668.65,898524.0
+hybrid_full,CNN-Transformer-BiLSTM (Full),mps,Apple Silicon Unified Memory Architecture,97.5,109.5,1940.93,257.83,2917.47,971780.0

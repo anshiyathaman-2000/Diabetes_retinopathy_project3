@@ -1,0 +1,4 @@
+model_id,model_name,checkpoint_filename,file_size_bytes,file_size_mb,includes_optimizer_state,includes_training_history,best_epoch,best_val_metric
+resnet50,ResNet-50 Baseline CNN,resnet50_five_class_clahe_sqrt_cw_s42_best.pt,282702306,269.61,True,True,13,0.8107
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),hybrid_five_class_clahe_compact_sqrt_cw_s42_best.pt,289451454,276.04,True,True,11,0.7594
+hybrid_full,CNN-Transformer-BiLSTM (Full),hybrid_five_class_clahe_s42_best.pt,306558222,292.36,True,True,12,0.6093

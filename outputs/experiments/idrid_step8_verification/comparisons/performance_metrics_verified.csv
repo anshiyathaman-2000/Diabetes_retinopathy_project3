@@ -1,0 +1,4 @@
+model_id,model_name,best_epoch,val_samples,val_accuracy,val_macro_f1,val_qwk,test_official_samples,test_official_accuracy,test_official_macro_f1,test_official_qwk,test_clean_samples,test_clean_accuracy,test_clean_macro_f1,test_clean_qwk
+resnet50,ResNet-50 Baseline CNN,13,83,0.6867,0.5707,0.8107,103,0.5825,0.4149,0.6039,102,0.5882,0.4196,0.6217
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),11,83,0.6145,0.4534,0.7594,103,0.4951,0.3925,0.5794,102,0.5,0.3965,0.5986
+hybrid_full,CNN-Transformer-BiLSTM (Full),12,83,0.4699,0.3549,0.6059,103,0.301,0.2619,0.3999,102,0.3039,0.2639,0.394

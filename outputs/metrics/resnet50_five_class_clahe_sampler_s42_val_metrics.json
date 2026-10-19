@@ -1,0 +1,97 @@
+{
+  "accuracy": 0.6867469879518072,
+  "macro_precision": 0.5663672456575682,
+  "macro_recall": 0.5625925925925925,
+  "macro_f1": 0.5628533535430086,
+  "weighted_f1": 0.6816633719417268,
+  "quadratic_weighted_kappa": 0.8119564423006651,
+  "overall_roc_auc": 0.8768418006471995,
+  "overall_pr_auc": null,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.8064516129032258,
+      "recall_sensitivity": 0.9259259259259259,
+      "specificity": 0.8928571428571429,
+      "f1_score": 0.8620689655172413,
+      "support": 27,
+      "roc_auc": 0.9656084656084656,
+      "pr_auc": 0.9250309349296377
+    },
+    "Mild NPDR": {
+      "precision": 0.25,
+      "recall_sensitivity": 0.25,
+      "specificity": 0.9620253164556962,
+      "f1_score": 0.25,
+      "support": 4,
+      "roc_auc": 0.875,
+      "pr_auc": 0.39742822966507174
+    },
+    "Moderate NPDR": {
+      "precision": 0.76,
+      "recall_sensitivity": 0.7037037037037037,
+      "specificity": 0.8928571428571429,
+      "f1_score": 0.7307692307692307,
+      "support": 27,
+      "roc_auc": 0.8548280423280423,
+      "pr_auc": 0.7212602257915355
+    },
+    "Severe NPDR": {
+      "precision": 0.6153846153846154,
+      "recall_sensitivity": 0.5333333333333333,
+      "specificity": 0.9264705882352942,
+      "f1_score": 0.5714285714285714,
+      "support": 15,
+      "roc_auc": 0.8627450980392157,
+      "pr_auc": 0.5899677795232958
+    },
+    "PDR": {
+      "precision": 0.4,
+      "recall_sensitivity": 0.4,
+      "specificity": 0.9178082191780822,
+      "f1_score": 0.4,
+      "support": 10,
+      "roc_auc": 0.826027397260274,
+      "pr_auc": 0.4695292162175724
+    }
+  },
+  "confusion_matrix": [
+    [
+      25,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      3,
+      1,
+      19,
+      2,
+      2
+    ],
+    [
+      0,
+      0,
+      3,
+      8,
+      4
+    ],
+    [
+      1,
+      0,
+      2,
+      3,
+      4
+    ]
+  ],
+  "best_validation_metric": 0.8119564423006651,
+  "monitor_metric": "val_qwk",
+  "total_training_time_seconds": 909.3383429050446
+}

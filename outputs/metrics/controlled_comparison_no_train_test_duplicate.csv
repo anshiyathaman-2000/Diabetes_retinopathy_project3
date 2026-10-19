@@ -1,0 +1,5 @@
+Model,Protocol,Test_Samples,Accuracy (%),QWK,Macro_F1,Weighted_F1,Multiclass_ROC_AUC,Best_Val_QWK,Best_Epoch,Metrics_JSON,Predictions_CSV
+ResNet-50,Official Benchmark,103,56.31,0.6339,0.4637,0.5517,0.8054,0.7891,12,outputs/metrics/resnet50_no_train_test_duplicate_official_test_metrics.json,outputs/predictions/resnet50_no_train_test_duplicate_official_predictions.csv
+ResNet-50,Sensitivity Analysis,102,56.86,0.6347,0.4679,0.5574,0.8079,0.7891,12,outputs/metrics/resnet50_no_train_test_duplicate_deduplicated_test_metrics.json,outputs/predictions/resnet50_no_train_test_duplicate_deduplicated_predictions.csv
+Compact Hybrid,Official Benchmark,103,38.83,0.5034,0.2854,0.3825,0.7301,0.6722,11,outputs/metrics/compact_hybrid_no_train_test_duplicate_official_test_metrics.json,outputs/predictions/compact_hybrid_no_train_test_duplicate_official_predictions.csv
+Compact Hybrid,Sensitivity Analysis,102,39.22,0.5045,0.2878,0.3871,0.7312,0.6722,11,outputs/metrics/compact_hybrid_no_train_test_duplicate_deduplicated_test_metrics.json,outputs/predictions/compact_hybrid_no_train_test_duplicate_deduplicated_predictions.csv

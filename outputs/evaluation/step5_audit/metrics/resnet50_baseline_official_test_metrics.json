@@ -1,0 +1,161 @@
+{
+  "accuracy": 0.5825242718446602,
+  "macro_precision": 0.4196153846153846,
+  "macro_recall": 0.4224115860919266,
+  "macro_f1": 0.4149173501286178,
+  "weighted_f1": 0.5548472406123165,
+  "quadratic_weighted_kappa": 0.6038946723821188,
+  "overall_roc_auc": 0.8151154034341543,
+  "overall_pr_auc": 0.5111245692180966,
+  "weighted_roc_auc": 0.8152890845377125,
+  "weighted_pr_auc": 0.6024142846416368,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.675,
+      "recall_sensitivity": 0.7941176470588235,
+      "specificity": 0.8115942028985508,
+      "f1_score": 0.7297297297297297,
+      "support": 34,
+      "roc_auc": 0.8908780903665814,
+      "pr_auc": 0.7462563656250484
+    },
+    "Mild NPDR": {
+      "precision": 0.0,
+      "recall_sensitivity": 0.0,
+      "specificity": 0.9897959183673469,
+      "f1_score": 0.0,
+      "support": 5,
+      "roc_auc": 0.8571428571428572,
+      "pr_auc": 0.2584057971014493
+    },
+    "Moderate NPDR": {
+      "precision": 0.5897435897435898,
+      "recall_sensitivity": 0.71875,
+      "specificity": 0.7746478873239436,
+      "f1_score": 0.647887323943662,
+      "support": 32,
+      "roc_auc": 0.75,
+      "pr_auc": 0.633858792770303
+    },
+    "Severe NPDR": {
+      "precision": 0.5,
+      "recall_sensitivity": 0.3684210526315789,
+      "specificity": 0.9166666666666666,
+      "f1_score": 0.42424242424242425,
+      "support": 19,
+      "roc_auc": 0.8151629072681703,
+      "pr_auc": 0.5296866591603566
+    },
+    "Proliferative DR": {
+      "precision": 0.3333333333333333,
+      "recall_sensitivity": 0.23076923076923078,
+      "specificity": 0.9333333333333333,
+      "f1_score": 0.2727272727272727,
+      "support": 13,
+      "roc_auc": 0.7623931623931625,
+      "pr_auc": 0.38741523143332546
+    }
+  },
+  "confusion_matrix": [
+    [
+      27,
+      1,
+      5,
+      1,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      3,
+      0,
+      23,
+      4,
+      2
+    ],
+    [
+      2,
+      0,
+      6,
+      7,
+      4
+    ],
+    [
+      3,
+      0,
+      5,
+      2,
+      3
+    ]
+  ],
+  "model_id": "resnet50_baseline",
+  "model_name": "ResNet-50 Baseline (Sqrt CW)",
+  "test_protocol": "official",
+  "test_sample_count": 103,
+  "parameter_counts": {
+    "total_parameters": 23518277,
+    "trainable_parameters": 23518277,
+    "frozen_parameters": 0,
+    "model_size_mb": 89.72,
+    "component_breakdown": {
+      "backbone": {
+        "total_parameters": 23508032,
+        "trainable_parameters": 23508032,
+        "size_mb": 89.68
+      },
+      "classifier": {
+        "total_parameters": 10245,
+        "trainable_parameters": 10245,
+        "size_mb": 0.04
+      }
+    }
+  },
+  "latency_benchmark_bs1": {
+    "hardware": "Darwin 24.6.0 (i386)",
+    "device": "Apple Silicon MPS (x86_64)",
+    "batch_size": 1,
+    "input_shape": [
+      1,
+      3,
+      256,
+      256
+    ],
+    "num_warmup_runs": 20,
+    "num_timed_runs": 100,
+    "mean_latency_ms": 39.929,
+    "std_latency_ms": 1.047,
+    "median_latency_ms": 40.035,
+    "p95_latency_ms": 41.925,
+    "p99_latency_ms": 42.401,
+    "min_latency_ms": 38.019,
+    "max_latency_ms": 43.376,
+    "throughput_fps": 25.04
+  },
+  "latency_benchmark_bs16": {
+    "hardware": "Darwin 24.6.0 (i386)",
+    "device": "Apple Silicon MPS (x86_64)",
+    "batch_size": 16,
+    "input_shape": [
+      16,
+      3,
+      256,
+      256
+    ],
+    "num_warmup_runs": 10,
+    "num_timed_runs": 50,
+    "mean_latency_ms": 342.347,
+    "std_latency_ms": 2.001,
+    "median_latency_ms": 342.462,
+    "p95_latency_ms": 345.407,
+    "p99_latency_ms": 345.64,
+    "min_latency_ms": 336.903,
+    "max_latency_ms": 345.723,
+    "throughput_fps": 46.74
+  },
+  "evaluation_duration_seconds": 3.187
+}

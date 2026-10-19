@@ -1,0 +1,5 @@
+Model,Official_Accuracy,Deduplicated_Accuracy,Accuracy_Delta,Official_QWK,Deduplicated_QWK,QWK_Delta,Official_Macro_F1,Deduplicated_Macro_F1,Macro_F1_Delta,Note
+ResNet-50 Baseline (5-Class),58.25,58.82,0.57,0.6039,0.6217,0.0179,0.4149,0.4196,0.0047,"IDRiD_064 (Test Grade 3, Train IDRiD_118 Grade 0) removed in Deduplicated split"
+Corrected Hybrid (5-Class),49.51,50.0,0.49,0.5794,0.5986,0.0192,0.3925,0.3965,0.004,"IDRiD_064 (Test Grade 3, Train IDRiD_118 Grade 0) removed in Deduplicated split"
+ResNet-50 Focal Loss (5-Class),58.25,58.82,0.57,0.656,0.6566,0.0007,0.4608,0.4654,0.0046,"IDRiD_064 (Test Grade 3, Train IDRiD_118 Grade 0) removed in Deduplicated split"
+ResNet-50 Binary Referable DR,85.44,86.27,0.84,0.692,0.7094,0.0174,0.846,0.8547,0.0087,"IDRiD_064 (Test Grade 3, Train IDRiD_118 Grade 0) removed in Deduplicated split"

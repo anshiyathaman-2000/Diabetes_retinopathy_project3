@@ -1,0 +1,17 @@
+{
+  "platform": "macOS-15.7.9-x86_64-i386-64bit",
+  "system": "Darwin",
+  "release": "24.6.0",
+  "machine": "x86_64",
+  "processor": "i386",
+  "python_version": "3.9.6",
+  "torch_version": "2.2.2",
+  "device_type": "mps",
+  "device_str": "mps",
+  "mps_available": true,
+  "cuda_available": false,
+  "dataset_split": "data/splits/leakage_aware_split_manifest.json (330 train, 83 val)",
+  "preprocessing_pipeline": "CIELAB Luminance (L*) CLAHE, 256x256, clipLimit=2.0, tileGridSize=(8,8)",
+  "fixed_normalization": "ImageNet mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]",
+  "class_weighting": "Square-root balanced class weights on 330 train samples"
+}

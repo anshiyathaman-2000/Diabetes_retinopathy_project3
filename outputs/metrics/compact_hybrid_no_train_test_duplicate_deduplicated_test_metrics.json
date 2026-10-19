@@ -1,0 +1,107 @@
+{
+  "accuracy": 0.39215686274509803,
+  "macro_precision": 0.3006559877955759,
+  "macro_recall": 0.29450414781297135,
+  "macro_f1": 0.28781300666546566,
+  "weighted_f1": 0.38706283269928393,
+  "quadratic_weighted_kappa": 0.5044675552951516,
+  "overall_roc_auc": 0.7311856148923839,
+  "overall_pr_auc": 0.39197038026672876,
+  "weighted_roc_auc": 0.7235899204974676,
+  "weighted_pr_auc": 0.49429177010696834,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5294117647058824,
+      "recall_sensitivity": 0.5294117647058824,
+      "specificity": 0.8676470588235294,
+      "f1_score": 0.5901639344262295,
+      "support": 34,
+      "roc_auc": 0.8248269896193772,
+      "pr_auc": 0.6672358579215155
+    },
+    "Mild NPDR": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall_sensitivity": 0.0,
+      "specificity": 1.0,
+      "f1_score": 0.0,
+      "support": 5,
+      "roc_auc": 0.7690721649484537,
+      "pr_auc": 0.11853682343969116
+    },
+    "Moderate NPDR": {
+      "precision": 0.32608695652173914,
+      "recall": 0.46875,
+      "recall_sensitivity": 0.46875,
+      "specificity": 0.5571428571428572,
+      "f1_score": 0.38461538461538464,
+      "support": 32,
+      "roc_auc": 0.6,
+      "pr_auc": 0.5316878462785624
+    },
+    "Severe NPDR": {
+      "precision": 0.3,
+      "recall": 0.16666666666666666,
+      "recall_sensitivity": 0.16666666666666666,
+      "specificity": 0.9166666666666666,
+      "f1_score": 0.21428571428571427,
+      "support": 18,
+      "roc_auc": 0.7420634920634921,
+      "pr_auc": 0.3547916650892841
+    },
+    "Proliferative DR": {
+      "precision": 0.21052631578947367,
+      "recall": 0.3076923076923077,
+      "recall_sensitivity": 0.3076923076923077,
+      "specificity": 0.8314606741573034,
+      "f1_score": 0.25,
+      "support": 13,
+      "roc_auc": 0.7199654278305964,
+      "pr_auc": 0.2875997086045905
+    }
+  },
+  "confusion_matrix": [
+    [
+      18,
+      0,
+      14,
+      0,
+      2
+    ],
+    [
+      3,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      15,
+      4,
+      8
+    ],
+    [
+      1,
+      0,
+      9,
+      3,
+      5
+    ],
+    [
+      0,
+      0,
+      6,
+      3,
+      4
+    ]
+  ],
+  "test_protocol": "deduplicated",
+  "test_samples": 102,
+  "checkpoint_epoch": 11,
+  "best_val_qwk": 0.6721547491601758,
+  "model_name": "hybrid",
+  "checkpoint_path": "checkpoints/hybrid_five_class_clahe_no_train_test_duplicate_s42_best.pt"
+}

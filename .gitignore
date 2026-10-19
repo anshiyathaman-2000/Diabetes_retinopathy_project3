@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Large datasets & raw data folders
+A. Segmentation/
+B. Disease Grading/
+C. Localization/
+data/*.zip
+data/*.tar.gz
+data/cache/
+data/cached/
+cache/
+
+# Checkpoints & Weights
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# Outputs (keep directory structure via .gitkeep if needed)
+outputs/predictions/*
+!outputs/predictions/.gitkeep
+outputs/explainability/*
+!outputs/explainability/.gitkeep
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo

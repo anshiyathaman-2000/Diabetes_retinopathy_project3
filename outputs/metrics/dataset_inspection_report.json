@@ -1,0 +1,121 @@
+{
+  "project": "Deep Learning Model for Early Detection of Diabetic Retinopathy Using IDRiD",
+  "dataset_name": "Indian Diabetic Retinopathy Image Dataset (IDRiD) - Disease Grading",
+  "environment": {
+    "python_version": "3.9.6",
+    "pytorch_version": "2.2.2",
+    "accelerator": "Apple Silicon MPS (Metal Performance Shaders)",
+    "cpu_count": 12
+  },
+  "total_dataset_images": 516,
+  "training_set": {
+    "split_name": "Training Set",
+    "csv_path": "B. Disease Grading/2. Groundtruths/a. IDRiD_Disease Grading_Training Labels.csv",
+    "img_dir": "B. Disease Grading/1. Original Images/a. Training Set",
+    "total_csv_samples": 413,
+    "total_disk_images": 413,
+    "matched_images": 413,
+    "missing_on_disk": [],
+    "untracked_on_disk": [],
+    "corrupted_images": [],
+    "duplicate_images": [
+      [
+        "IDRiD_279.jpg",
+        "IDRiD_079.jpg"
+      ],
+      [
+        "IDRiD_327.jpg",
+        "IDRiD_028.jpg"
+      ],
+      [
+        "IDRiD_333.jpg",
+        "IDRiD_045.jpg"
+      ],
+      [
+        "IDRiD_375.jpg",
+        "IDRiD_073.jpg"
+      ],
+      [
+        "IDRiD_391.jpg",
+        "IDRiD_021.jpg"
+      ]
+    ],
+    "resolutions": [
+      "4288x2848"
+    ],
+    "color_modes": [
+      "RGB"
+    ],
+    "dr_grade_distribution": {
+      "0": 134,
+      "1": 20,
+      "2": 136,
+      "3": 74,
+      "4": 49
+    },
+    "dr_grade_distribution_named": {
+      "Grade 0: No DR": 134,
+      "Grade 1: Mild NPDR": 20,
+      "Grade 2: Moderate NPDR": 136,
+      "Grade 3: Severe NPDR": 74,
+      "Grade 4: Proliferative DR": 49
+    },
+    "referable_dr_distribution": {
+      "Non-Referable DR (Grade 0-1)": 154,
+      "Referable DR (Grade 2-4)": 259
+    },
+    "macular_edema_distribution": {
+      "0": 177,
+      "1": 41,
+      "2": 195
+    }
+  },
+  "testing_set": {
+    "split_name": "Testing Set",
+    "csv_path": "B. Disease Grading/2. Groundtruths/b. IDRiD_Disease Grading_Testing Labels.csv",
+    "img_dir": "B. Disease Grading/1. Original Images/b. Testing Set",
+    "total_csv_samples": 103,
+    "total_disk_images": 103,
+    "matched_images": 103,
+    "missing_on_disk": [],
+    "untracked_on_disk": [],
+    "corrupted_images": [],
+    "duplicate_images": [],
+    "resolutions": [
+      "4288x2848"
+    ],
+    "color_modes": [
+      "RGB"
+    ],
+    "dr_grade_distribution": {
+      "0": 34,
+      "1": 5,
+      "2": 32,
+      "3": 19,
+      "4": 13
+    },
+    "dr_grade_distribution_named": {
+      "Grade 0: No DR": 34,
+      "Grade 1: Mild NPDR": 5,
+      "Grade 2: Moderate NPDR": 32,
+      "Grade 3: Severe NPDR": 19,
+      "Grade 4: Proliferative DR": 13
+    },
+    "referable_dr_distribution": {
+      "Non-Referable DR (Grade 0-1)": 39,
+      "Referable DR (Grade 2-4)": 64
+    },
+    "macular_edema_distribution": {
+      "0": 45,
+      "1": 10,
+      "2": 48
+    }
+  },
+  "combined_grade_distribution": {
+    "Grade 0: No DR": 168,
+    "Grade 1: Mild NPDR": 25,
+    "Grade 2: Moderate NPDR": 168,
+    "Grade 3: Severe NPDR": 93,
+    "Grade 4: Proliferative DR": 62
+  }
+}

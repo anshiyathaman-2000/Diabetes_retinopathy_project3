@@ -1,0 +1,35 @@
+{
+  "resnet50": {
+    "model_id": "resnet50",
+    "model_name": "ResNet-50 Baseline CNN",
+    "checkpoint_filename": "resnet50_five_class_clahe_sqrt_cw_s42_best.pt",
+    "file_size_bytes": 282702306,
+    "file_size_mb": 269.61,
+    "includes_optimizer_state": true,
+    "includes_training_history": true,
+    "best_epoch": 13,
+    "best_val_metric": 0.8107
+  },
+  "hybrid_compact": {
+    "model_id": "hybrid_compact",
+    "model_name": "CNN-Transformer-BiLSTM (Compact)",
+    "checkpoint_filename": "hybrid_five_class_clahe_compact_sqrt_cw_s42_best.pt",
+    "file_size_bytes": 289451454,
+    "file_size_mb": 276.04,
+    "includes_optimizer_state": true,
+    "includes_training_history": true,
+    "best_epoch": 11,
+    "best_val_metric": 0.7594
+  },
+  "hybrid_full": {
+    "model_id": "hybrid_full",
+    "model_name": "CNN-Transformer-BiLSTM (Full)",
+    "checkpoint_filename": "hybrid_five_class_clahe_s42_best.pt",
+    "file_size_bytes": 306558222,
+    "file_size_mb": 292.36,
+    "includes_optimizer_state": true,
+    "includes_training_history": true,
+    "best_epoch": 12,
+    "best_val_metric": 0.6093
+  }
+}

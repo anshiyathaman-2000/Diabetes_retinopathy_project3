@@ -1,0 +1,7 @@
+Model,Grade_0_NoDR_F1,Grade_1_Mild_NPDR_Precision,Grade_1_Mild_NPDR_Recall,Grade_1_Mild_NPDR_F1,Grade_1_Mild_NPDR_Support,Grade_2_Moderate_F1,Grade_3_Severe_F1,Grade_4_PDR_F1,Macro_F1,QWK
+ResNet-50 Baseline (Official Benchmark),0.7297,0.0,0.0,0.0,5,0.6479,0.4242,0.2727,0.4149,0.6039
+ResNet-50 Baseline (Deduplicated Clean),0.7397,0.0,0.0,0.0,5,0.6479,0.4375,0.2727,0.4196,0.6217
+Corrected Hybrid (Official Benchmark),0.6349,0.0,0.0,0.0,5,0.4478,0.48,0.4,0.3925,0.5794
+Corrected Hybrid (Deduplicated Clean),0.6452,0.0,0.0,0.0,5,0.4478,0.4898,0.4,0.3965,0.5986
+ResNet-50 Improved (Official Benchmark),0.7324,0.3333,0.2,0.25,5,0.6111,0.5,0.2105,0.4608,0.656
+ResNet-50 Improved (Deduplicated Clean),0.7324,0.3333,0.2,0.25,5,0.6197,0.5143,0.2105,0.4654,0.6566

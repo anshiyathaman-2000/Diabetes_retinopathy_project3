@@ -1,0 +1,47 @@
+{
+  "accuracy": 0.8543689320388349,
+  "macro_precision": 0.8444444444444444,
+  "macro_recall": 0.8477564102564102,
+  "macro_f1": 0.8460081730290043,
+  "weighted_f1": 0.8547172969975778,
+  "quadratic_weighted_kappa": 0.6920470400637831,
+  "overall_roc_auc": 0.8858173076923077,
+  "overall_pr_auc": 0.9343614353427578,
+  "per_class_metrics": {
+    "Non-Referable DR (Grade 0-1)": {
+      "precision": 0.8,
+      "recall_sensitivity": 0.8205128205128205,
+      "specificity": 0.875,
+      "f1_score": 0.810126582278481,
+      "support": 39,
+      "roc_auc": null,
+      "pr_auc": null
+    },
+    "Referable DR (Grade 2-4)": {
+      "precision": 0.8888888888888888,
+      "recall_sensitivity": 0.875,
+      "specificity": 0.8205128205128205,
+      "f1_score": 0.8818897637795275,
+      "support": 64,
+      "roc_auc": null,
+      "pr_auc": null
+    }
+  },
+  "confusion_matrix": [
+    [
+      32,
+      7
+    ],
+    [
+      8,
+      56
+    ]
+  ],
+  "total_parameters": 23512130,
+  "total_eval_time_seconds": 3.2553842067718506,
+  "avg_inference_time_per_image_ms": 31.605671910406315,
+  "model_name": "resnet50",
+  "preprocessing": "clahe",
+  "seed": 42,
+  "task": "binary"
+}

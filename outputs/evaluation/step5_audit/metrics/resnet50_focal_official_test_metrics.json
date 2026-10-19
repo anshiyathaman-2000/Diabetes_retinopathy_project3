@@ -1,0 +1,161 @@
+{
+  "accuracy": 0.5825242718446602,
+  "macro_precision": 0.48975622681505043,
+  "macro_recall": 0.45594724934508213,
+  "macro_f1": 0.4608063586195536,
+  "weighted_f1": 0.5625612243837178,
+  "quadratic_weighted_kappa": 0.6559963004829925,
+  "overall_roc_auc": 0.7949677186789804,
+  "overall_pr_auc": 0.4724916929056519,
+  "weighted_roc_auc": 0.8076370145400198,
+  "weighted_pr_auc": 0.5628370894813607,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.7027027027027027,
+      "recall_sensitivity": 0.7647058823529411,
+      "specificity": 0.8405797101449275,
+      "f1_score": 0.7323943661971831,
+      "support": 34,
+      "roc_auc": 0.8780903665814151,
+      "pr_auc": 0.7022177838524591
+    },
+    "Mild NPDR": {
+      "precision": 0.3333333333333333,
+      "recall_sensitivity": 0.2,
+      "specificity": 0.9795918367346939,
+      "f1_score": 0.25,
+      "support": 5,
+      "roc_auc": 0.7918367346938775,
+      "pr_auc": 0.1953040592684056
+    },
+    "Moderate NPDR": {
+      "precision": 0.55,
+      "recall_sensitivity": 0.6875,
+      "specificity": 0.7464788732394366,
+      "f1_score": 0.6111111111111112,
+      "support": 32,
+      "roc_auc": 0.7601232394366197,
+      "pr_auc": 0.5634704299846974
+    },
+    "Severe NPDR": {
+      "precision": 0.5294117647058824,
+      "recall_sensitivity": 0.47368421052631576,
+      "specificity": 0.9047619047619048,
+      "f1_score": 0.5,
+      "support": 19,
+      "roc_auc": 0.8276942355889724,
+      "pr_auc": 0.5616968368748555
+    },
+    "Proliferative DR": {
+      "precision": 0.3333333333333333,
+      "recall_sensitivity": 0.15384615384615385,
+      "specificity": 0.9555555555555556,
+      "f1_score": 0.21052631578947367,
+      "support": 13,
+      "roc_auc": 0.7170940170940171,
+      "pr_auc": 0.3397693545478416
+    }
+  },
+  "confusion_matrix": [
+    [
+      26,
+      1,
+      7,
+      0,
+      0
+    ],
+    [
+      4,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      22,
+      5,
+      0
+    ],
+    [
+      0,
+      1,
+      5,
+      9,
+      4
+    ],
+    [
+      2,
+      0,
+      6,
+      3,
+      2
+    ]
+  ],
+  "model_id": "resnet50_focal",
+  "model_name": "ResNet-50 (Focal Loss)",
+  "test_protocol": "official",
+  "test_sample_count": 103,
+  "parameter_counts": {
+    "total_parameters": 23518277,
+    "trainable_parameters": 23518277,
+    "frozen_parameters": 0,
+    "model_size_mb": 89.72,
+    "component_breakdown": {
+      "backbone": {
+        "total_parameters": 23508032,
+        "trainable_parameters": 23508032,
+        "size_mb": 89.68
+      },
+      "classifier": {
+        "total_parameters": 10245,
+        "trainable_parameters": 10245,
+        "size_mb": 0.04
+      }
+    }
+  },
+  "latency_benchmark_bs1": {
+    "hardware": "Darwin 24.6.0 (i386)",
+    "device": "Apple Silicon MPS (x86_64)",
+    "batch_size": 1,
+    "input_shape": [
+      1,
+      3,
+      256,
+      256
+    ],
+    "num_warmup_runs": 20,
+    "num_timed_runs": 100,
+    "mean_latency_ms": 39.77,
+    "std_latency_ms": 1.322,
+    "median_latency_ms": 39.551,
+    "p95_latency_ms": 41.881,
+    "p99_latency_ms": 43.317,
+    "min_latency_ms": 37.156,
+    "max_latency_ms": 45.675,
+    "throughput_fps": 25.14
+  },
+  "latency_benchmark_bs16": {
+    "hardware": "Darwin 24.6.0 (i386)",
+    "device": "Apple Silicon MPS (x86_64)",
+    "batch_size": 16,
+    "input_shape": [
+      16,
+      3,
+      256,
+      256
+    ],
+    "num_warmup_runs": 10,
+    "num_timed_runs": 50,
+    "mean_latency_ms": 342.396,
+    "std_latency_ms": 6.179,
+    "median_latency_ms": 340.703,
+    "p95_latency_ms": 358.277,
+    "p99_latency_ms": 362.731,
+    "min_latency_ms": 336.078,
+    "max_latency_ms": 362.882,
+    "throughput_fps": 46.73
+  },
+  "evaluation_duration_seconds": 3.264
+}

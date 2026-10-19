@@ -1,0 +1,4 @@
+model_id,model_name,total_parameters,trainable_parameters,frozen_parameters,estimated_fp32_size_mb,backbone_parameters,projection_parameters,transformer_parameters,bilstm_parameters,classifier_head_parameters
+resnet50,ResNet-50 Baseline CNN,23518277,23518277,0,89.72,23508032,0,0,0,10245
+hybrid_compact,CNN-Transformer-BiLSTM (Compact),24077509,24077509,0,91.85,23508032,262528,198528,99328,901
+hybrid_full,CNN-Transformer-BiLSTM (Full),25503045,25503045,0,97.29,23508032,525056,1054720,395264,3589

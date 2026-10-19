@@ -1,0 +1,101 @@
+[
+  {
+    "model_id": "resnet50_focal",
+    "model_name": "ResNet-50 (Focal Loss)",
+    "num_folds": 5,
+    "mean_accuracy": 0.8935,
+    "std_accuracy": 0.0135,
+    "mean_macro_f1": 0.8615,
+    "std_macro_f1": 0.0138,
+    "mean_qwk": 0.9388,
+    "std_qwk": 0.0102,
+    "mean_roc_auc": 0.9762,
+    "fold_accuracies": [
+      0.9036,
+      0.869,
+      0.9048,
+      0.8889,
+      0.9012
+    ],
+    "fold_macro_f1s": [
+      0.8664,
+      0.8345,
+      0.8639,
+      0.872,
+      0.8706
+    ],
+    "fold_qwks": [
+      0.9454,
+      0.948,
+      0.9219,
+      0.9319,
+      0.9467
+    ]
+  },
+  {
+    "model_id": "hybrid_compact",
+    "model_name": "Corrected Compact Hybrid (v2)",
+    "num_folds": 5,
+    "mean_accuracy": 0.5976,
+    "std_accuracy": 0.0465,
+    "mean_macro_f1": 0.453,
+    "std_macro_f1": 0.0477,
+    "mean_qwk": 0.7831,
+    "std_qwk": 0.0582,
+    "mean_roc_auc": 0.8363,
+    "fold_accuracies": [
+      0.6747,
+      0.6071,
+      0.5952,
+      0.5802,
+      0.5309
+    ],
+    "fold_macro_f1s": [
+      0.5131,
+      0.4727,
+      0.4685,
+      0.4414,
+      0.3693
+    ],
+    "fold_qwks": [
+      0.8533,
+      0.8299,
+      0.7898,
+      0.754,
+      0.6887
+    ]
+  },
+  {
+    "model_id": "resnet50_baseline",
+    "model_name": "ResNet-50 Baseline (Sqrt CW)",
+    "num_folds": 5,
+    "mean_accuracy": 0.9054,
+    "std_accuracy": 0.0255,
+    "mean_macro_f1": 0.8751,
+    "std_macro_f1": 0.0167,
+    "mean_qwk": 0.9478,
+    "std_qwk": 0.0224,
+    "mean_roc_auc": 0.9801,
+    "fold_accuracies": [
+      0.9518,
+      0.9048,
+      0.9048,
+      0.8765,
+      0.8889
+    ],
+    "fold_macro_f1s": [
+      0.8988,
+      0.8852,
+      0.865,
+      0.8501,
+      0.8763
+    ],
+    "fold_qwks": [
+      0.9873,
+      0.9563,
+      0.9235,
+      0.9379,
+      0.9341
+    ]
+  }
+]

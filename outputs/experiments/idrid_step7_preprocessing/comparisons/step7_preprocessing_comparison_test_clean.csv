@@ -1,0 +1,4 @@
+config_id,preprocessing_name,split,accuracy,macro_f1,weighted_f1,quadratic_weighted_kappa,macro_precision,macro_recall,recall_grade_0_no_dr,recall_grade_1_mild,recall_grade_2_moderate,recall_grade_3_severe,recall_grade_4_pdr
+original,Configuration 1: Original Fundus (ImageNet Norm),test_clean (N=102),0.598,0.4419,0.5736,0.6149,0.4477,0.4468,0.7941,0.0,0.6875,0.4444,0.3077
+standard_clahe,Configuration 2: Standard RGB CLAHE,test_clean (N=102),0.4902,0.3505,0.4785,0.5905,0.3624,0.3513,0.6471,0.0,0.6562,0.2222,0.2308
+existing_clahe,Configuration 3: Existing LAB Luminance CLAHE,test_clean (N=102),0.5,0.3706,0.482,0.5587,0.3771,0.3781,0.5588,0.0,0.6562,0.4444,0.2308

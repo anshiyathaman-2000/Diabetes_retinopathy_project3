@@ -1,0 +1,39 @@
+{
+  "class_mapping": {
+    "0": "No DR",
+    "1": "Mild NPDR",
+    "2": "Moderate NPDR",
+    "3": "Severe NPDR",
+    "4": "Proliferative DR"
+  },
+  "training_counts": {
+    "No DR": 134,
+    "Mild NPDR": 20,
+    "Moderate NPDR": 136,
+    "Severe NPDR": 74,
+    "Proliferative DR": 49
+  },
+  "training_percentages": {
+    "No DR": 32.45,
+    "Mild NPDR": 4.84,
+    "Moderate NPDR": 32.93,
+    "Severe NPDR": 17.92,
+    "Proliferative DR": 11.86
+  },
+  "testing_counts": {
+    "No DR": 34,
+    "Mild NPDR": 5,
+    "Moderate NPDR": 32,
+    "Severe NPDR": 19,
+    "Proliferative DR": 13
+  },
+  "testing_percentages": {
+    "No DR": 33.01,
+    "Mild NPDR": 4.85,
+    "Moderate NPDR": 31.07,
+    "Severe NPDR": 18.45,
+    "Proliferative DR": 12.62
+  },
+  "imbalance_ratio_train_grade2_vs_grade1": 6.8,
+  "imbalance_ratio_train_grade0_vs_grade1": 6.7
+}

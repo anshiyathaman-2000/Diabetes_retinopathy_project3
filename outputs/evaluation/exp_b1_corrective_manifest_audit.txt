@@ -1,0 +1,198 @@
+====================================================================================================
+CORRECTIVE AUDIT & PREPARATION REPORT: EXP B1 RESNET-50 AT 512x512
+PROJECT: IDRiD Diabetic Retinopathy Classification
+AUDIT REPORT PATH: outputs/evaluation/exp_b1_corrective_manifest_audit.txt
+AUDIT TIMESTAMP: 2026-10-19T15:25:00+05:30
+ROLE: Senior PyTorch Engineer & Independent Research-Audit Specialist
+====================================================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------------------------------------
+This audit establishes a leak-free, mathematically verified corrective dataset partition for
+Exp B1 (ResNet-50 512x512) on IDRiD Disease Grading. The completed original Exp B1 run (which used
+leakage_aware_split_manifest.json, N=330 train) included training image IDRiD_118 (Grade 0), which is
+cryptographically identical to official test image IDRiD_064 (Grade 3).
+
+To guarantee absolute test-set integrity without altering official clinical ground truths, the
+corrective partition removes IDRiD_118 from the training set (N=329 train, N=83 val), while keeping
+the official test set (N=103) completely intact with its official Grade 3 label for IDRiD_064.
+
+All 9 mandatory verification checks PASSED. A dedicated configuration has been prepared.
+Per the strict stop condition, NO TRAINING WAS INITIATED.
+
+====================================================================================================
+1. ORIGINAL LEAKAGE FINDING & CRYPTOGRAPHIC EVIDENCE
+====================================================================================================
+Cross-Split Duplicate Identification:
+  - Training Image : B. Disease Grading/1. Original Images/a. Training Set/IDRiD_118.jpg
+  - Test Image     : B. Disease Grading/1. Original Images/b. Testing Set/IDRiD_064.jpg
+  - SHA-256 Hash   : 505330878f4d4186a71b8001570100b82b6b05cb431e81e2c259d8c584314708
+  - File Byte Size : 8,639,114 bytes (Both images identical at the binary level)
+  - Official Labels:
+      * IDRiD_118 (Train): Grade 0 (No Diabetic Retinopathy)
+      * IDRiD_064 (Test) : Grade 3 (Severe Non-Proliferative Diabetic Retinopathy)
+  - Clinical Conflict: High-grade conflicting annotation in IDRiD official ground truth.
+  - Leakage Mechanism: When IDRiD_118 was present in training, the network was exposed during training
+                       to the exact fundus image present in the holdout test set. Although the model
+                       did not predict Grade 0 during test evaluation (it predicted Grade 2 Moderate DR
+                       with 41.5% confidence), the presence of the test image's visual features during
+                       gradient optimization constitutes cross-split feature leakage.
+
+====================================================================================================
+2. ORIGINAL VS. CORRECTED SAMPLE COUNTS & CLASS DISTRIBUTIONS
+====================================================================================================
+Partition Sample Counts:
+  Partition        Original Exp B1 Manifest    Corrected Manifest       Delta
+  --------------------------------------------------------------------------------------------------
+  Training Set     330 samples                 329 samples              -1 sample (IDRiD_118 removed)
+  Validation Set    83 samples                  83 samples               0 (100% identical IDs)
+  Official Test    103 samples                 103 samples               0 (100% identical IDs)
+  Sensitivity Test 102 samples                 102 samples               0 (excludes IDRiD_064)
+  Total Samples    516 samples                 515 active / 1 excluded   -1
+
+Class-Wise Distribution Comparison:
+  Class / Grade     Original Train (N=330)      Corrected Train (N=329)     Validation (N=83)   Test (N=103)
+  ----------------------------------------------------------------------------------------------------------
+  Grade 0 (No DR)    107 (32.4%)                 106 (32.2%)                 27 (32.5%)          34 (33.0%)
+  Grade 1 (Mild)      16 ( 4.8%)                  16 ( 4.9%)                  4 ( 4.8%)           5 ( 4.9%)
+  Grade 2 (Moderate) 109 (33.0%)                 109 (33.1%)                 27 (32.5%)          32 (31.1%)
+  Grade 3 (Severe)    59 (17.9%)                  59 (17.9%)                 15 (18.1%)          19 (18.4%)
+  Grade 4 (PDR)       39 (11.8%)                  39 (11.9%)                 10 (12.0%)          13 (12.6%)
+
+Finding: The removal of single sample IDRiD_118 produces negligible class-frequency shift (-0.2% on Grade 0),
+preserving the stratified 80/20 train/val representation.
+
+====================================================================================================
+3. DUPLICATE-GROUP AUDIT ACROSS ENTIRE DATASET (N=516 IMAGES)
+====================================================================================================
+An exhaustive SHA-256 scan of all 516 JPEG images across training (413) and test (103) directories
+confirmed exactly 6 duplicate clusters (510 unique image hashes, 12 paired images).
+
+Cluster 1: Cross-Split Duplicate (Cross-Split Feature Contamination)
+  - Train: IDRiD_118 (Grade 0) | Test: IDRiD_064 (Grade 3)
+  - SHA-256: 505330878f4d4186a71b8001570100b82b6b05cb431e81e2c259d8c584314708
+  - Status in Corrected Manifest: IDRiD_118 is EXCLUDED. IDRiD_064 is RETAINED in Test.
+  - Corrective Result: ZERO cross-split duplicates cross Train and Test.
+
+Cluster 2: Intra-Train Duplicate
+  - Images: IDRiD_045 (Grade 2) & IDRiD_333 (Grade 2)
+  - SHA-256: fe4f412a179adf78bd9a367d1702878d45302db3f7706c4bf7efc834a312e91c
+  - Status: Both assigned strictly to TRAIN. Labels match. Partition cohesion PASS.
+
+Cluster 3: Intra-Train Duplicate
+  - Images: IDRiD_079 (Grade 1) & IDRiD_279 (Grade 1)
+  - SHA-256: 314e41f14e9d2966eff50a085d02c7acf2a1439702358b5849f3db4657f8381b
+  - Status: Both assigned strictly to TRAIN. Labels match. Partition cohesion PASS.
+
+Cluster 4: Intra-Train Duplicate with Ground-Truth Annotation Conflict
+  - Images: IDRiD_028 (Grade 4 / PDR) & IDRiD_327 (Grade 3 / Severe NPDR)
+  - SHA-256: 350754e96bf6b9540264c1b53088dc1f5826edb2a9d3d3221acf9ef5afd76a13
+  - Status: Both assigned strictly to TRAIN. Partition cohesion PASS.
+  - Clinical Integrity Note: Labels conflict in official ground truth. Preserved as-is without guessing.
+
+Cluster 5: Intra-Validation Duplicate with Ground-Truth Annotation Conflict
+  - Images: IDRiD_021 (Grade 1 / Mild NPDR) & IDRiD_391 (Grade 2 / Moderate NPDR)
+  - SHA-256: 7c8af82fac4906b51dbe2d827e050b8b29a18cac21f569d2ac16af1cd65c9baf
+  - Status: Both assigned strictly to VALIDATION. Partition cohesion PASS.
+  - Clinical Integrity Note: Labels conflict in official ground truth. Preserved as-is without guessing.
+
+Cluster 6: Intra-Train Duplicate
+  - Images: IDRiD_073 (Grade 2) & IDRiD_375 (Grade 2)
+  - SHA-256: a05e538dcf8554a99cdbc72a2ae4dedc196d87c73d9278869e644b4163af8f4d
+  - Status: Both assigned strictly to TRAIN. Labels match. Partition cohesion PASS.
+
+Duplicate Audit Conclusion:
+Zero duplicate pairs cross the Train/Val boundary. Zero duplicate pairs cross the Train/Test boundary.
+
+====================================================================================================
+4. VERIFICATION OF THE CORRECTED MANIFEST
+====================================================================================================
+Corrected Manifest File: data/splits/exp_b1_corrective_no_train_test_duplicate_manifest.json
+
+Check 1: IDRiD_118 is absent from both training and validation
+  - Verified: IDRiD_118 in train: False | IDRiD_118 in val: False [PASS]
+
+Check 2: IDRiD_064 remains in official test set with original Grade 3 label
+  - Verified: IDRiD_064 in official_test: True | Label in test CSV: 3 [PASS]
+
+Check 3: SHA-256 duplicate of IDRiD_064 is absent from training and validation
+  - Verified: Zero images in Train or Val match hash 505330878... [PASS]
+
+Check 4: No exact-image hash occurs across training and validation
+  - Verified: len(set(train_hashes) & set(val_hashes)) == 0 [PASS]
+
+Check 5: No exact-image hash occurs across training and official test
+  - Verified: len(set(train_hashes) & set(test_hashes)) == 0 [PASS]
+
+Check 6: Every image path exists on disk and has a valid ground-truth label
+  - Verified: 329 Train images, 83 Val images, 103 Test images all exist and have integer labels 0-4 [PASS]
+
+Check 7: No unintended duplicate image IDs or missing samples
+  - Verified: Exactly 329 unique train IDs + 83 unique val IDs = 412. Exactly 103 test IDs [PASS]
+
+Check 8: Class counts and sample counts recorded
+  - Verified: Train={0:106, 1:16, 2:109, 3:59, 4:39}, Val={0:27, 1:4, 2:27, 3:15, 4:10}, Test={0:34, 1:5, 2:32, 3:19, 4:13} [PASS]
+
+Check 9: Original manifest and original experiment artifacts remain unchanged
+  - Verified: data/splits/leakage_aware_split_manifest.json remains untouched (git diff clean, train=330)
+  - Verified: checkpoints/resnet50_five_class_clahe_exp_b1_res512_s42_best.pt unchanged
+  - Verified: outputs/metrics/resnet50_exp_b1_res512_official_test_metrics.json unchanged [PASS]
+
+====================================================================================================
+5. SEPARATE CORRECTIVE CONFIGURATION & TEST ISOLATION SAFEGUARDS
+====================================================================================================
+Configuration File: configs/experiment_exp_b1_corrective_res512.yaml
+
+Technical Parameters (Exact Match to Completed Exp B1):
+  - Model Name        : resnet50 (pretrained=True, dropout=0.3)
+  - Spatial Resolution: 512x512
+  - Preprocessing     : CLAHE (clip_limit=2.0, tile_grid_size=[8, 8])
+  - Seed              : 42
+  - Loss Type         : CrossEntropyLoss with sqrt-based class weights
+  - Optimizer         : AdamW (lr=0.0001, weight_decay=0.0001)
+  - Micro-batch Size  : 8
+  - Grad Accum Steps  : 2 (Effective Batch Size = 16)
+  - LR Scheduler      : Cosine Annealing (T_max=15, eta_min=1e-6)
+  - Early Stopping    : Enabled (monitor_metric=val_qwk, patience=7, mode=max)
+  - Manifest Target   : data/splits/exp_b1_corrective_no_train_test_duplicate_manifest.json
+  - Experiment Suffix : exp_b1_corrective_res512
+
+Target Artifact Outputs (Completely Separated from Original Exp B1):
+  - Best Checkpoint   : checkpoints/resnet50_five_class_clahe_exp_b1_corrective_res512_s42_best.pt
+  - Last Checkpoint   : checkpoints/resnet50_five_class_clahe_exp_b1_corrective_res512_s42_last.pt
+  - Validation Metrics: outputs/metrics/resnet50_five_class_clahe_exp_b1_corrective_res512_s42_val_metrics.json
+  - Training Curves   : outputs/plots/resnet50_five_class_clahe_exp_b1_corrective_res512_s42_training_curves.png
+  - Test Metrics JSON : outputs/metrics/resnet50_exp_b1_corrective_res512_official_test_metrics.json
+  - Predictions CSV   : outputs/predictions/resnet50_exp_b1_corrective_res512_official_predictions.csv
+
+Test Isolation Safeguards:
+  - In src/train.py, test_loader is initialized solely for sample count logging. It is NEVER used for
+    gradient computation, parameter updates, early stopping, hyperparameter tuning, or checkpoint selection.
+  - In src/dataset.py, split_type 'leakage_aware' explicitly validates the manifest file and raises
+    FileNotFoundError with no silent fallback if the manifest path is missing or corrupt.
+  - The official test evaluation uses all 103 official test samples with their unaltered labels.
+    Any 102-sample analysis is strictly designated as a secondary sensitivity analysis.
+
+====================================================================================================
+6. UNRESOLVED DATASET-LEVEL LIMITATIONS
+====================================================================================================
+1. Conflicting Ground-Truth Annotations in Intra-Training Duplicates:
+   - Cluster 4 (IDRiD_028 vs IDRiD_327): Label Grade 4 vs Grade 3.
+   - Cluster 5 (IDRiD_021 vs IDRiD_391): Label Grade 1 vs Grade 2.
+   These reflect clinical inter-grader variance in the original IDRiD benchmark. The auditor did not
+   alter these labels, preserving historical reproducibility.
+2. Minority Class Imbalance (Grade 1 / Mild NPDR):
+   - Only 16 training samples (4.9%) and 5 test samples (4.9%) exist in IDRiD.
+   - ResNet-50 at 512x512 with sqrt class weights achieved 0.0% recall in the original run. While 512x512
+     improves resolution for microaneurysms, class rarity remains a severe clinical hurdle.
+
+====================================================================================================
+7. VERIFIED EXECUTION COMMAND (DISPLAY ONLY — NOT EXECUTED)
+====================================================================================================
+When authorized by the user, the corrective training run should be launched via:
+
+python3 src/train.py --config configs/experiment_exp_b1_corrective_res512.yaml
+
+====================================================================================================
+AUDIT STATUS: COMPLETE & READY FOR USER REVIEW (TRAINING BLOCKED PENDING APPROVAL)
+====================================================================================================

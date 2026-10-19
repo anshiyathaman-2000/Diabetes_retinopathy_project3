@@ -1,0 +1,11 @@
+model_id,model_name,protocol,test_n,accuracy,macro_f1,weighted_f1,qwk,overall_roc_auc,overall_pr_auc,mild_precision,mild_recall,mild_f1,mild_support
+resnet50_unweighted,ResNet-50 Unweighted CE,official,103,0.5825,0.4107,0.5451,0.5853,0.7804,0.4696,0.0,0.0,0.0,5
+resnet50_unweighted,ResNet-50 Unweighted CE,deduplicated,102,0.5882,0.4155,0.5509,0.5852,0.7844,0.473,0.0,0.0,0.0,5
+resnet50_sqrt_cw,ResNet-50 Sqrt Class-Weighted CE,official,103,0.5825,0.4149,0.5548,0.6039,0.8151,0.5111,0.0,0.0,0.0,5
+resnet50_sqrt_cw,ResNet-50 Sqrt Class-Weighted CE,deduplicated,102,0.5882,0.4196,0.5618,0.6217,0.8222,0.5167,0.0,0.0,0.0,5
+resnet50_inverse_cw,ResNet-50 Inverse Class-Weighted CE,official,103,0.5534,0.4936,0.5605,0.6236,0.7817,0.4678,0.2727,0.6,0.375,5
+resnet50_inverse_cw,ResNet-50 Inverse Class-Weighted CE,deduplicated,102,0.5588,0.4984,0.5664,0.6245,0.7874,0.4729,0.2727,0.6,0.375,5
+resnet50_focal,ResNet-50 Focal Loss (gamma=2.0),official,103,0.5825,0.4608,0.5626,0.656,0.795,0.4725,0.3333,0.2,0.25,5
+resnet50_focal,ResNet-50 Focal Loss (gamma=2.0),deduplicated,102,0.5882,0.4654,0.5684,0.6566,0.8011,0.4778,0.3333,0.2,0.25,5
+hybrid_compact,CNN-Transformer-BiLSTM (Sqrt CW),official,103,0.4951,0.3925,0.4877,0.5794,0.7504,0.4306,0.0,0.0,0.0,5
+hybrid_compact,CNN-Transformer-BiLSTM (Sqrt CW),deduplicated,102,0.5,0.3965,0.4929,0.5986,0.7558,0.4341,0.0,0.0,0.0,5

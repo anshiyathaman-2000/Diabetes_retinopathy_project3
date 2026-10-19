@@ -1,0 +1,705 @@
+{
+  "ground_truth_counts": {
+    "train_samples": 413,
+    "test_samples": 103
+  },
+  "duplicate_clusters_audit": [
+    {
+      "cluster_id": 1,
+      "image_1": "IDRiD_118",
+      "image_2": "IDRiD_064",
+      "hash_identical": true,
+      "md5": "2f72ef33ec56843d7425e8c599d73ab1",
+      "sha256": "505330878f4d4186a71b8001570100b82b6b05cb431e81e2c259d8c584314708",
+      "size_bytes": 406805,
+      "actual_grade_1": 0,
+      "actual_grade_2": 3,
+      "labels_conflict": true
+    },
+    {
+      "cluster_id": 2,
+      "image_1": "IDRiD_375",
+      "image_2": "IDRiD_073",
+      "hash_identical": true,
+      "md5": "c1b1501c1fe3de4dd80ae518329a1cae",
+      "sha256": "a05e538dcf8554a99cdbc72a2ae4dedc196d87c73d9278869e644b4163af8f4d",
+      "size_bytes": 391322,
+      "actual_grade_1": 2,
+      "actual_grade_2": 2,
+      "labels_conflict": false
+    },
+    {
+      "cluster_id": 3,
+      "image_1": "IDRiD_333",
+      "image_2": "IDRiD_045",
+      "hash_identical": true,
+      "md5": "f264175c31091d002c5ec6cc84d12db0",
+      "sha256": "fe4f412a179adf78bd9a367d1702878d45302db3f7706c4bf7efc834a312e91c",
+      "size_bytes": 400123,
+      "actual_grade_1": 2,
+      "actual_grade_2": 2,
+      "labels_conflict": false
+    },
+    {
+      "cluster_id": 4,
+      "image_1": "IDRiD_028",
+      "image_2": "IDRiD_327",
+      "hash_identical": true,
+      "md5": "b6fb4306d3ec434b9556733abe7f0802",
+      "sha256": "350754e96bf6b9540264c1b53088dc1f5826edb2a9d3d3221acf9ef5afd76a13",
+      "size_bytes": 398771,
+      "actual_grade_1": 4,
+      "actual_grade_2": 3,
+      "labels_conflict": true
+    },
+    {
+      "cluster_id": 5,
+      "image_1": "IDRiD_079",
+      "image_2": "IDRiD_279",
+      "hash_identical": true,
+      "md5": "431796106f13ef00ca7f5816c7dbfac4",
+      "sha256": "314e41f14e9d2966eff50a085d02c7acf2a1439702358b5849f3db4657f8381b",
+      "size_bytes": 431886,
+      "actual_grade_1": 1,
+      "actual_grade_2": 1,
+      "labels_conflict": false
+    },
+    {
+      "cluster_id": 6,
+      "image_1": "IDRiD_021",
+      "image_2": "IDRiD_391",
+      "hash_identical": true,
+      "md5": "3699552df24b83ecc02d0ce3a397b6e3",
+      "sha256": "7c8af82fac4906b51dbe2d827e050b8b29a18cac21f569d2ac16af1cd65c9baf",
+      "size_bytes": 385284,
+      "actual_grade_1": 1,
+      "actual_grade_2": 2,
+      "labels_conflict": true
+    }
+  ],
+  "manifest_audit": {
+    "train_count": 330,
+    "val_count": 83,
+    "total_count": 413,
+    "cross_split_overlap_count": 0,
+    "cross_split_overlap_names": []
+  },
+  "recalculated_metrics": [
+    {
+      "id": "resnet50_five_class_official",
+      "model": "ResNet-50 Baseline",
+      "task": "five_class",
+      "protocol": "official",
+      "sample_count": 103,
+      "accuracy": 0.5825,
+      "macro_precision": 0.4196,
+      "macro_recall": 0.4224,
+      "macro_f1": 0.4149,
+      "weighted_f1": 0.5548,
+      "quadratic_weighted_kappa": 0.6039,
+      "roc_auc": 0.8151,
+      "pr_auc": null,
+      "confusion_matrix": [
+        [
+          27,
+          1,
+          5,
+          1,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          23,
+          4,
+          2
+        ],
+        [
+          2,
+          0,
+          6,
+          7,
+          4
+        ],
+        [
+          3,
+          0,
+          5,
+          2,
+          3
+        ]
+      ],
+      "per_class": {
+        "No DR": {
+          "precision": 0.675,
+          "recall_sensitivity": 0.7941,
+          "specificity": 0.8116,
+          "f1_score": 0.7297,
+          "support": 34
+        },
+        "Mild NPDR": {
+          "precision": 0.0,
+          "recall_sensitivity": 0.0,
+          "specificity": 0.9898,
+          "f1_score": 0.0,
+          "support": 5
+        },
+        "Moderate NPDR": {
+          "precision": 0.5897,
+          "recall_sensitivity": 0.7188,
+          "specificity": 0.7746,
+          "f1_score": 0.6479,
+          "support": 32
+        },
+        "Severe NPDR": {
+          "precision": 0.5,
+          "recall_sensitivity": 0.3684,
+          "specificity": 0.9167,
+          "f1_score": 0.4242,
+          "support": 19
+        },
+        "Proliferative DR": {
+          "precision": 0.3333,
+          "recall_sensitivity": 0.2308,
+          "specificity": 0.9333,
+          "f1_score": 0.2727,
+          "support": 13
+        }
+      }
+    },
+    {
+      "id": "resnet50_five_class_dedup",
+      "model": "ResNet-50 Baseline",
+      "task": "five_class",
+      "protocol": "deduplicated",
+      "sample_count": 102,
+      "accuracy": 0.5882,
+      "macro_precision": 0.4231,
+      "macro_recall": 0.4265,
+      "macro_f1": 0.4196,
+      "weighted_f1": 0.5618,
+      "quadratic_weighted_kappa": 0.6217,
+      "roc_auc": 0.8222,
+      "pr_auc": null,
+      "confusion_matrix": [
+        [
+          27,
+          1,
+          5,
+          1,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          23,
+          4,
+          2
+        ],
+        [
+          1,
+          0,
+          6,
+          7,
+          4
+        ],
+        [
+          3,
+          0,
+          5,
+          2,
+          3
+        ]
+      ],
+      "per_class": {
+        "No DR": {
+          "precision": 0.6923,
+          "recall_sensitivity": 0.7941,
+          "specificity": 0.8235,
+          "f1_score": 0.7397,
+          "support": 34
+        },
+        "Mild NPDR": {
+          "precision": 0.0,
+          "recall_sensitivity": 0.0,
+          "specificity": 0.9897,
+          "f1_score": 0.0,
+          "support": 5
+        },
+        "Moderate NPDR": {
+          "precision": 0.5897,
+          "recall_sensitivity": 0.7188,
+          "specificity": 0.7714,
+          "f1_score": 0.6479,
+          "support": 32
+        },
+        "Severe NPDR": {
+          "precision": 0.5,
+          "recall_sensitivity": 0.3889,
+          "specificity": 0.9167,
+          "f1_score": 0.4375,
+          "support": 18
+        },
+        "Proliferative DR": {
+          "precision": 0.3333,
+          "recall_sensitivity": 0.2308,
+          "specificity": 0.9326,
+          "f1_score": 0.2727,
+          "support": 13
+        }
+      }
+    },
+    {
+      "id": "hybrid_five_class_official",
+      "model": "Corrected Hybrid Baseline",
+      "task": "five_class",
+      "protocol": "official",
+      "sample_count": 103,
+      "accuracy": 0.4951,
+      "macro_precision": 0.4154,
+      "macro_recall": 0.3993,
+      "macro_f1": 0.3925,
+      "weighted_f1": 0.4877,
+      "quadratic_weighted_kappa": 0.5794,
+      "roc_auc": 0.7504,
+      "pr_auc": null,
+      "confusion_matrix": [
+        [
+          20,
+          0,
+          10,
+          4,
+          0
+        ],
+        [
+          3,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          4,
+          1,
+          15,
+          10,
+          2
+        ],
+        [
+          2,
+          0,
+          4,
+          12,
+          1
+        ],
+        [
+          0,
+          0,
+          4,
+          5,
+          4
+        ]
+      ],
+      "per_class": {
+        "No DR": {
+          "precision": 0.6897,
+          "recall_sensitivity": 0.5882,
+          "specificity": 0.8696,
+          "f1_score": 0.6349,
+          "support": 34
+        },
+        "Mild NPDR": {
+          "precision": 0.0,
+          "recall_sensitivity": 0.0,
+          "specificity": 0.9898,
+          "f1_score": 0.0,
+          "support": 5
+        },
+        "Moderate NPDR": {
+          "precision": 0.4286,
+          "recall_sensitivity": 0.4688,
+          "specificity": 0.7183,
+          "f1_score": 0.4478,
+          "support": 32
+        },
+        "Severe NPDR": {
+          "precision": 0.3871,
+          "recall_sensitivity": 0.6316,
+          "specificity": 0.7738,
+          "f1_score": 0.48,
+          "support": 19
+        },
+        "Proliferative DR": {
+          "precision": 0.5714,
+          "recall_sensitivity": 0.3077,
+          "specificity": 0.9667,
+          "f1_score": 0.4,
+          "support": 13
+        }
+      }
+    },
+    {
+      "id": "hybrid_five_class_dedup",
+      "model": "Corrected Hybrid Baseline",
+      "task": "five_class",
+      "protocol": "deduplicated",
+      "sample_count": 102,
+      "accuracy": 0.5,
+      "macro_precision": 0.4203,
+      "macro_recall": 0.4063,
+      "macro_f1": 0.3965,
+      "weighted_f1": 0.4929,
+      "quadratic_weighted_kappa": 0.5986,
+      "roc_auc": 0.7558,
+      "pr_auc": null,
+      "confusion_matrix": [
+        [
+          20,
+          0,
+          10,
+          4,
+          0
+        ],
+        [
+          3,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          4,
+          1,
+          15,
+          10,
+          2
+        ],
+        [
+          1,
+          0,
+          4,
+          12,
+          1
+        ],
+        [
+          0,
+          0,
+          4,
+          5,
+          4
+        ]
+      ],
+      "per_class": {
+        "No DR": {
+          "precision": 0.7143,
+          "recall_sensitivity": 0.5882,
+          "specificity": 0.8824,
+          "f1_score": 0.6452,
+          "support": 34
+        },
+        "Mild NPDR": {
+          "precision": 0.0,
+          "recall_sensitivity": 0.0,
+          "specificity": 0.9897,
+          "f1_score": 0.0,
+          "support": 5
+        },
+        "Moderate NPDR": {
+          "precision": 0.4286,
+          "recall_sensitivity": 0.4688,
+          "specificity": 0.7143,
+          "f1_score": 0.4478,
+          "support": 32
+        },
+        "Severe NPDR": {
+          "precision": 0.3871,
+          "recall_sensitivity": 0.6667,
+          "specificity": 0.7738,
+          "f1_score": 0.4898,
+          "support": 18
+        },
+        "Proliferative DR": {
+          "precision": 0.5714,
+          "recall_sensitivity": 0.3077,
+          "specificity": 0.9663,
+          "f1_score": 0.4,
+          "support": 13
+        }
+      }
+    },
+    {
+      "id": "resnet50_focal_official",
+      "model": "ResNet-50 Focal Loss",
+      "task": "five_class",
+      "protocol": "official",
+      "sample_count": 103,
+      "accuracy": 0.5825,
+      "macro_precision": 0.4898,
+      "macro_recall": 0.4559,
+      "macro_f1": 0.4608,
+      "weighted_f1": 0.5626,
+      "quadratic_weighted_kappa": 0.656,
+      "roc_auc": 0.795,
+      "pr_auc": null,
+      "confusion_matrix": [
+        [
+          26,
+          1,
+          7,
+          0,
+          0
+        ],
+        [
+          4,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          22,
+          5,
+          0
+        ],
+        [
+          0,
+          1,
+          5,
+          9,
+          4
+        ],
+        [
+          2,
+          0,
+          6,
+          3,
+          2
+        ]
+      ],
+      "per_class": {
+        "No DR": {
+          "precision": 0.7027,
+          "recall_sensitivity": 0.7647,
+          "specificity": 0.8406,
+          "f1_score": 0.7324,
+          "support": 34
+        },
+        "Mild NPDR": {
+          "precision": 0.3333,
+          "recall_sensitivity": 0.2,
+          "specificity": 0.9796,
+          "f1_score": 0.25,
+          "support": 5
+        },
+        "Moderate NPDR": {
+          "precision": 0.55,
+          "recall_sensitivity": 0.6875,
+          "specificity": 0.7465,
+          "f1_score": 0.6111,
+          "support": 32
+        },
+        "Severe NPDR": {
+          "precision": 0.5294,
+          "recall_sensitivity": 0.4737,
+          "specificity": 0.9048,
+          "f1_score": 0.5,
+          "support": 19
+        },
+        "Proliferative DR": {
+          "precision": 0.3333,
+          "recall_sensitivity": 0.1538,
+          "specificity": 0.9556,
+          "f1_score": 0.2105,
+          "support": 13
+        }
+      }
+    },
+    {
+      "id": "resnet50_focal_dedup",
+      "model": "ResNet-50 Focal Loss",
+      "task": "five_class",
+      "protocol": "deduplicated",
+      "sample_count": 102,
+      "accuracy": 0.5882,
+      "macro_precision": 0.4926,
+      "macro_recall": 0.4612,
+      "macro_f1": 0.4654,
+      "weighted_f1": 0.5684,
+      "quadratic_weighted_kappa": 0.6566,
+      "roc_auc": 0.8011,
+      "pr_auc": null,
+      "confusion_matrix": [
+        [
+          26,
+          1,
+          7,
+          0,
+          0
+        ],
+        [
+          4,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          22,
+          5,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          9,
+          4
+        ],
+        [
+          2,
+          0,
+          6,
+          3,
+          2
+        ]
+      ],
+      "per_class": {
+        "No DR": {
+          "precision": 0.7027,
+          "recall_sensitivity": 0.7647,
+          "specificity": 0.8382,
+          "f1_score": 0.7324,
+          "support": 34
+        },
+        "Mild NPDR": {
+          "precision": 0.3333,
+          "recall_sensitivity": 0.2,
+          "specificity": 0.9794,
+          "f1_score": 0.25,
+          "support": 5
+        },
+        "Moderate NPDR": {
+          "precision": 0.5641,
+          "recall_sensitivity": 0.6875,
+          "specificity": 0.7571,
+          "f1_score": 0.6197,
+          "support": 32
+        },
+        "Severe NPDR": {
+          "precision": 0.5294,
+          "recall_sensitivity": 0.5,
+          "specificity": 0.9048,
+          "f1_score": 0.5143,
+          "support": 18
+        },
+        "Proliferative DR": {
+          "precision": 0.3333,
+          "recall_sensitivity": 0.1538,
+          "specificity": 0.9551,
+          "f1_score": 0.2105,
+          "support": 13
+        }
+      }
+    },
+    {
+      "id": "resnet50_binary_official",
+      "model": "ResNet-50 Binary Referable",
+      "task": "binary",
+      "protocol": "official",
+      "sample_count": 103,
+      "accuracy": 0.8544,
+      "macro_precision": 0.8444,
+      "macro_recall": 0.8478,
+      "macro_f1": 0.846,
+      "weighted_f1": 0.8547,
+      "quadratic_weighted_kappa": 0.692,
+      "roc_auc": 0.8858,
+      "pr_auc": 0.9344,
+      "confusion_matrix": [
+        [
+          32,
+          7
+        ],
+        [
+          8,
+          56
+        ]
+      ],
+      "per_class": {
+        "Non-Referable DR (Grade 0-1)": {
+          "precision": 0.8,
+          "recall_sensitivity": 0.8205,
+          "specificity": 0.875,
+          "f1_score": 0.8101,
+          "support": 39
+        },
+        "Referable DR (Grade 2-4)": {
+          "precision": 0.8889,
+          "recall_sensitivity": 0.875,
+          "specificity": 0.8205,
+          "f1_score": 0.8819,
+          "support": 64
+        }
+      }
+    },
+    {
+      "id": "resnet50_binary_dedup",
+      "model": "ResNet-50 Binary Referable",
+      "task": "binary",
+      "protocol": "deduplicated",
+      "sample_count": 102,
+      "accuracy": 0.8627,
+      "macro_precision": 0.8547,
+      "macro_recall": 0.8547,
+      "macro_f1": 0.8547,
+      "weighted_f1": 0.8627,
+      "quadratic_weighted_kappa": 0.7094,
+      "roc_auc": 0.8913,
+      "pr_auc": 0.9368,
+      "confusion_matrix": [
+        [
+          32,
+          7
+        ],
+        [
+          7,
+          56
+        ]
+      ],
+      "per_class": {
+        "Non-Referable DR (Grade 0-1)": {
+          "precision": 0.8205,
+          "recall_sensitivity": 0.8205,
+          "specificity": 0.8889,
+          "f1_score": 0.8205,
+          "support": 39
+        },
+        "Referable DR (Grade 2-4)": {
+          "precision": 0.8889,
+          "recall_sensitivity": 0.8889,
+          "specificity": 0.8205,
+          "f1_score": 0.8889,
+          "support": 63
+        }
+      }
+    }
+  ]
+}

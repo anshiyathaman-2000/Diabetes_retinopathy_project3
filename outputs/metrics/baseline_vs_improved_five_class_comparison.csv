@@ -1,0 +1,7 @@
+Model,Imbalance_Strategy,Loss_Function,Evaluation_Protocol,Test_Samples,Accuracy,Macro_F1,Weighted_F1,QWK,OvR_ROC_AUC,Mild_NPDR_Precision,Mild_NPDR_Recall,Mild_NPDR_F1,Mild_NPDR_Support
+ResNet-50 Baseline,Sqrt Class Weights,CrossEntropy,Official Benchmark,103,58.25,0.4149,0.5548,0.6039,0.8151,0.0,0.0,0.0,5
+ResNet-50 Baseline,Sqrt Class Weights,CrossEntropy,Deduplicated Clean,102,58.82,0.4196,0.5618,0.6217,0.8222,0.0,0.0,0.0,5
+Corrected Hybrid,Sqrt Class Weights,CrossEntropy,Official Benchmark,103,49.51,0.3925,0.4877,0.5794,0.7504,0.0,0.0,0.0,5
+Corrected Hybrid,Sqrt Class Weights,CrossEntropy,Deduplicated Clean,102,50.0,0.3965,0.4929,0.5986,0.7558,0.0,0.0,0.0,5
+ResNet-50 Improved,Sqrt CW + Focal Loss (gamma=2.0),Focal Loss,Official Benchmark,103,58.25,0.4608,0.5626,0.656,0.795,0.3333,0.2,0.25,5
+ResNet-50 Improved,Sqrt CW + Focal Loss (gamma=2.0),Focal Loss,Deduplicated Clean,102,58.82,0.4654,0.5684,0.6566,0.8011,0.3333,0.2,0.25,5

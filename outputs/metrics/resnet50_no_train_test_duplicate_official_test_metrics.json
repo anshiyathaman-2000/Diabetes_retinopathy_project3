@@ -1,0 +1,107 @@
+{
+  "accuracy": 0.5631067961165048,
+  "macro_precision": 0.5137254901960785,
+  "macro_recall": 0.44867319599904737,
+  "macro_f1": 0.46368922015980835,
+  "weighted_f1": 0.5516689555524507,
+  "quadratic_weighted_kappa": 0.6339172378776339,
+  "overall_roc_auc": 0.8054459635088651,
+  "overall_pr_auc": 0.4893930804020344,
+  "weighted_roc_auc": 0.797773197035975,
+  "weighted_pr_auc": 0.5711414555612002,
+  "per_class_metrics": {
+    "No DR": {
+      "precision": 0.7352941176470589,
+      "recall": 0.7352941176470589,
+      "recall_sensitivity": 0.7352941176470589,
+      "specificity": 0.8695652173913043,
+      "f1_score": 0.7352941176470589,
+      "support": 34,
+      "roc_auc": 0.8900255754475703,
+      "pr_auc": 0.7554684148598223
+    },
+    "Mild NPDR": {
+      "precision": 0.5,
+      "recall": 0.2,
+      "recall_sensitivity": 0.2,
+      "specificity": 0.9897959183673469,
+      "f1_score": 0.2857142857142857,
+      "support": 5,
+      "roc_auc": 0.9,
+      "pr_auc": 0.28792270531400965
+    },
+    "Moderate NPDR": {
+      "precision": 0.5,
+      "recall": 0.65625,
+      "recall_sensitivity": 0.65625,
+      "specificity": 0.704225352112676,
+      "f1_score": 0.5675675675675675,
+      "support": 32,
+      "roc_auc": 0.7112676056338028,
+      "pr_auc": 0.5451911703464951
+    },
+    "Severe NPDR": {
+      "precision": 0.5,
+      "recall": 0.42105263157894735,
+      "recall_sensitivity": 0.42105263157894735,
+      "specificity": 0.9047619047619048,
+      "f1_score": 0.45714285714285713,
+      "support": 19,
+      "roc_auc": 0.8020050125313283,
+      "pr_auc": 0.5161553984239662
+    },
+    "Proliferative DR": {
+      "precision": 0.3333333333333333,
+      "recall": 0.23076923076923078,
+      "recall_sensitivity": 0.23076923076923078,
+      "specificity": 0.9333333333333333,
+      "f1_score": 0.2727272727272727,
+      "support": 13,
+      "roc_auc": 0.7239316239316239,
+      "pr_auc": 0.34222771306587846
+    }
+  },
+  "confusion_matrix": [
+    [
+      25,
+      1,
+      8,
+      0,
+      0
+    ],
+    [
+      3,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      3,
+      0,
+      21,
+      6,
+      2
+    ],
+    [
+      1,
+      0,
+      6,
+      8,
+      4
+    ],
+    [
+      2,
+      0,
+      6,
+      2,
+      3
+    ]
+  ],
+  "test_protocol": "official",
+  "test_samples": 103,
+  "checkpoint_epoch": 12,
+  "best_val_qwk": 0.7890683035539743,
+  "model_name": "resnet50",
+  "checkpoint_path": "checkpoints/resnet50_five_class_clahe_no_train_test_duplicate_s42_best.pt"
+}

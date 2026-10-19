@@ -1,0 +1,6 @@
+model_id,model_name,split,accuracy,macro_f1,weighted_f1,qwk,mild_npdr_precision,mild_npdr_recall,mild_npdr_f1,mild_npdr_support,mild_npdr_roc_auc,mild_npdr_pr_auc
+resnet50_unweighted,ResNet-50 Unweighted CE,validation,0.6867,0.5016,0.6502,0.7755,0.0,0.0,0.0,4,0.8339,0.3638
+resnet50_sqrt_cw,ResNet-50 Sqrt Class-Weighted CE,validation,0.6867,0.5707,0.6692,0.8107,0.5,0.25,0.3333,4,0.7642,0.3289
+resnet50_inverse_cw,ResNet-50 Inverse Class-Weighted CE,validation,0.6747,0.5561,0.6676,0.8408,0.2,0.25,0.2222,4,0.8592,0.2601
+resnet50_focal,ResNet-50 Focal Loss (gamma=2.0),validation,0.6867,0.5403,0.6665,0.8136,0.3333,0.25,0.2857,4,0.8117,0.3487
+hybrid_compact,CNN-Transformer-BiLSTM (Sqrt CW),validation,0.6145,0.4534,0.5929,0.7594,0.0,0.0,0.0,4,0.5839,0.0675

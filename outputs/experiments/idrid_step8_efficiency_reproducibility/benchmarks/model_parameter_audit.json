@@ -1,0 +1,186 @@
+{
+  "resnet50": {
+    "total_parameters": 23518277,
+    "trainable_parameters": 23518277,
+    "frozen_parameters": 0,
+    "model_size_mb": 89.72,
+    "component_breakdown": {
+      "backbone": {
+        "total_parameters": 23508032,
+        "trainable_parameters": 23508032,
+        "size_mb": 89.68
+      },
+      "classifier": {
+        "total_parameters": 10245,
+        "trainable_parameters": 10245,
+        "size_mb": 0.04
+      }
+    }
+  },
+  "hybrid_compact": {
+    "total_parameters": 24077509,
+    "trainable_parameters": 24077509,
+    "frozen_parameters": 0,
+    "model_size_mb": 91.85,
+    "component_breakdown": {
+      "conv1": {
+        "total_parameters": 9408,
+        "trainable_parameters": 9408,
+        "size_mb": 0.04
+      },
+      "bn1": {
+        "total_parameters": 128,
+        "trainable_parameters": 128,
+        "size_mb": 0.0
+      },
+      "relu": {
+        "total_parameters": 0,
+        "trainable_parameters": 0,
+        "size_mb": 0.0
+      },
+      "maxpool": {
+        "total_parameters": 0,
+        "trainable_parameters": 0,
+        "size_mb": 0.0
+      },
+      "layer1": {
+        "total_parameters": 215808,
+        "trainable_parameters": 215808,
+        "size_mb": 0.82
+      },
+      "layer2": {
+        "total_parameters": 1219584,
+        "trainable_parameters": 1219584,
+        "size_mb": 4.65
+      },
+      "layer3": {
+        "total_parameters": 7098368,
+        "trainable_parameters": 7098368,
+        "size_mb": 27.08
+      },
+      "layer4": {
+        "total_parameters": 14964736,
+        "trainable_parameters": 14964736,
+        "size_mb": 57.09
+      },
+      "proj": {
+        "total_parameters": 262272,
+        "trainable_parameters": 262272,
+        "size_mb": 1.0
+      },
+      "proj_norm": {
+        "total_parameters": 256,
+        "trainable_parameters": 256,
+        "size_mb": 0.0
+      },
+      "pos_dropout": {
+        "total_parameters": 0,
+        "trainable_parameters": 0,
+        "size_mb": 0.0
+      },
+      "transformer": {
+        "total_parameters": 198272,
+        "trainable_parameters": 198272,
+        "size_mb": 0.76
+      },
+      "transformer_norm": {
+        "total_parameters": 256,
+        "trainable_parameters": 256,
+        "size_mb": 0.0
+      },
+      "bilstm": {
+        "total_parameters": 99328,
+        "trainable_parameters": 99328,
+        "size_mb": 0.38
+      },
+      "classifier": {
+        "total_parameters": 901,
+        "trainable_parameters": 901,
+        "size_mb": 0.0
+      }
+    }
+  },
+  "hybrid_full": {
+    "total_parameters": 25503045,
+    "trainable_parameters": 25503045,
+    "frozen_parameters": 0,
+    "model_size_mb": 97.29,
+    "component_breakdown": {
+      "conv1": {
+        "total_parameters": 9408,
+        "trainable_parameters": 9408,
+        "size_mb": 0.04
+      },
+      "bn1": {
+        "total_parameters": 128,
+        "trainable_parameters": 128,
+        "size_mb": 0.0
+      },
+      "relu": {
+        "total_parameters": 0,
+        "trainable_parameters": 0,
+        "size_mb": 0.0
+      },
+      "maxpool": {
+        "total_parameters": 0,
+        "trainable_parameters": 0,
+        "size_mb": 0.0
+      },
+      "layer1": {
+        "total_parameters": 215808,
+        "trainable_parameters": 215808,
+        "size_mb": 0.82
+      },
+      "layer2": {
+        "total_parameters": 1219584,
+        "trainable_parameters": 1219584,
+        "size_mb": 4.65
+      },
+      "layer3": {
+        "total_parameters": 7098368,
+        "trainable_parameters": 7098368,
+        "size_mb": 27.08
+      },
+      "layer4": {
+        "total_parameters": 14964736,
+        "trainable_parameters": 14964736,
+        "size_mb": 57.09
+      },
+      "proj": {
+        "total_parameters": 524544,
+        "trainable_parameters": 524544,
+        "size_mb": 2.0
+      },
+      "proj_norm": {
+        "total_parameters": 512,
+        "trainable_parameters": 512,
+        "size_mb": 0.0
+      },
+      "pos_dropout": {
+        "total_parameters": 0,
+        "trainable_parameters": 0,
+        "size_mb": 0.0
+      },
+      "transformer": {
+        "total_parameters": 1054208,
+        "trainable_parameters": 1054208,
+        "size_mb": 4.02
+      },
+      "transformer_norm": {
+        "total_parameters": 512,
+        "trainable_parameters": 512,
+        "size_mb": 0.0
+      },
+      "bilstm": {
+        "total_parameters": 395264,
+        "trainable_parameters": 395264,
+        "size_mb": 1.51
+      },
+      "classifier": {
+        "total_parameters": 3589,
+        "trainable_parameters": 3589,
+        "size_mb": 0.01
+      }
+    }
+  }
+}

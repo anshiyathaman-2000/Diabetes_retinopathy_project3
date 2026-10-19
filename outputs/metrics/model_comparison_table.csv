@@ -1,0 +1,4 @@
+Model,Parameters,Inference Speed (ms/img),Test Accuracy (%),QWK,Macro F1,Weighted F1,Multiclass ROC-AUC
+Baseline ResNet-50,"23,518,277",35.54,55.34,0.6236,0.4936,0.5605,0.7817
+Proposed CNN-Transformer-BiLSTM (Initial),"25,503,045",43.65,30.10,0.4278,0.2611,0.3185,0.6752
+Proposed Compact CNN-Transformer-BiLSTM (Improved),"24,077,509",34.23,49.51,0.5794,0.3925,0.4877,0.7504

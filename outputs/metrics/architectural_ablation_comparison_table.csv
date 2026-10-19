@@ -1,0 +1,6 @@
+Model Architecture,Role,Parameters,Best Val Epoch,Val Accuracy (%),Val QWK,Val Macro F1,Test Accuracy (%),Test QWK,Test Macro F1
+Baseline ResNet-50,Baseline CNN,"23,518,277",11,67.47,0.8408,0.5561,55.34%,0.6236,0.4936
+Proposed Hybrid (Initial v1),Initial Hybrid Baseline,"25,503,045",12,49.4,0.6093,0.4122,30.10%,0.4278,0.2611
+CNN-Transformer (without BiLSTM),Ablation 1,"23,945,733",10,60.24,0.715,0.4224,N/A,N/A,N/A
+CNN-BiLSTM (without Transformer),Ablation 2,"23,878,021",14,56.63,0.5918,0.3549,N/A,N/A,N/A
+Corrected Compact Hybrid (v2),Proposed Corrected Hybrid,"24,077,509",11,61.45,0.7594,0.4534,49.51%,0.5794,0.3925
